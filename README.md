@@ -9,3 +9,4 @@ https://www.microsoft.com/en-us/sql-server/sql-server-downloads
 - Instance Name: NotesSQL
 - Instance ID: NOTESSQL
 - Mixed authentication mode, password is admin
+- User is bellkross
