@@ -8,6 +8,7 @@ https://www.microsoft.com/en-us/sql-server/sql-server-downloads
 
 - Instance Name: NotesSQL
 - Instance ID: NOTESSQL
-- Mixed authentication mode,
+- Mixed authentication mode
   - User is bellkross
   - Password is dH5imkO0BbH0ZOoY
+- SQL Server Management Studio 18.4
