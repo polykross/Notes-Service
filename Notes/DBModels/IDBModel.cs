@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DBModels
+namespace Notes.DBModels
 {
     public class IDBModel
     {
