@@ -1,5 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration;
-using Notes.DBModels;
+﻿using Notes.DBModels;
+using System.Data.Entity.ModelConfiguration;
 
 namespace Notes.EntityFrameworkDBProvider.ModelConfiguration
 {

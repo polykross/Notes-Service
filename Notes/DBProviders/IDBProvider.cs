@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Notes.DBModels;
+using System;
 using System.Collections.Generic;
-using Notes.DBModels;
 
 namespace Notes.DBProviders
 {

@@ -14,7 +14,7 @@ namespace Notes.DBModels
         private string _login;
         [DataMember]
         private string _password;
-        [DataMember] 
+        [DataMember]
         private List<Note> _notes;
         #endregion
 
