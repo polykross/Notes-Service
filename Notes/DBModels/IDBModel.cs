@@ -2,8 +2,8 @@
 
 namespace Notes.DBModels
 {
-    public class IDBModel
+    public interface IDBModel
     {
-        private Guid Guid { get; }
+        Guid Guid { get; }
     }
 }
