@@ -12,6 +12,7 @@ namespace Notes.EntityFrameworkDBProvider.ModelConfiguration
             Property(customer => customer.Guid).HasColumnName("id").IsRequired();
             Property(customer => customer.Login).HasColumnName("login").IsRequired();
             Property(customer => customer.Password).HasColumnName("password").IsRequired();
+            HasIndex(customer => customer.Login).IsUnique(true);
         }
     }
 }
