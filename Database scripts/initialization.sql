@@ -13,7 +13,7 @@ create table dbo.Customer
 (
     id       UNIQUEIDENTIFIER default NEWID(),
     login    varchar(255) not null,
-    password varchar(255) not null,
+    password varchar(max) not null,
     constraint customer_pk primary key (id),
     constraint customer_login_uq unique (login)
 );
