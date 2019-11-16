@@ -11,22 +11,22 @@ drop table if exists Customer;
 
 create table dbo.Customer
 (
-    uuid     UNIQUEIDENTIFIER default NEWID(),
+    id       UNIQUEIDENTIFIER default NEWID(),
     login    varchar(255) not null,
     password varchar(255) not null,
-    constraint customer_pk primary key (uuid),
+    constraint customer_pk primary key (id),
     constraint customer_login_uq unique (login)
 );
 
 create table dbo.Note
 (
-    uuid           UNIQUEIDENTIFIER default NEWID(),
+    id             UNIQUEIDENTIFIER default NEWID(),
     title          varchar(255)     not null,
     text           varchar(max)     not null,
     creation_date  datetime         not null,
     last_edit_date datetime         not null,
-    customer_uuid  UNIQUEIDENTIFIER not null,
-    constraint note_pq primary key (uuid),
-    constraint note_customer_fk foreign key (customer_uuid) references Customer (uuid)
+    customer_id    UNIQUEIDENTIFIER not null,
+    constraint note_pq primary key (id),
+    constraint note_customer_fk foreign key (customer_id) references Customer (id)
 
 );
