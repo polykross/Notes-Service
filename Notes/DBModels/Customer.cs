@@ -4,8 +4,8 @@ using System.Runtime.Serialization;
 
 namespace Notes.DBModels
 {
-    [DataContract]
-    class Customer : IDBModel
+    [DataContract(IsReference = true)]
+    public class Customer : IDBModel
     {
         #region Fields
         [DataMember]
