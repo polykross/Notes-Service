@@ -51,6 +51,11 @@ namespace Notes.DBModels
             }
             set { _password = value; }
         }
+        public virtual List<Note> Notes
+        {
+            get => _notes;
+            set => _notes = value;
+        }
         #endregion
 
         #region Constructor
@@ -59,12 +64,12 @@ namespace Notes.DBModels
         {
             _guid = Guid.NewGuid();
             _login = login;
-            _password = password;
+            SetPassword(password);
         }
 
         public Customer()
         {
-
+            _notes = new List<Note>();
         }
 
         #endregion
