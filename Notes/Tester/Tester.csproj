@@ -50,8 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>Notes.Tester.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -91,10 +90,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DBModels\DBModels.csproj">
-      <Project>{639f5a6c-5675-4c29-8b8e-2a261bd21c77}</Project>
-      <Name>DBModels</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DBProviders\DBProviders.csproj">
       <Project>{2085d6f9-fe86-4abd-b61e-9d611119be2c}</Project>
       <Name>DBProviders</Name>

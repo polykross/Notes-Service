@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using Notes.EntityFrameworkDBProvider;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Notes.DBModels;
-using Notes.EntityFrameworkDBProvider;
+using Customer = Notes.EntityFrameworkDBProvider.Customer;
 
 namespace Notes.Tester
 {
@@ -11,44 +10,76 @@ namespace Notes.Tester
     {
         private static int _freeNumber;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine($"DBContextTest:{DBContextTest()}");
+            DeleteCustomers(GetAllCustomers());
+            var result = DBContextTest();
+            Console.WriteLine($"DBContextTest:{result}");
+            Console.ReadKey();
         }
 
         private static bool DBContextTest()
         {
+            return AdditionStatefulTest1() && RemovalStatefulTest2();
+        }
+
+        private static bool RemovalStatefulTest2()
+        {
+            DeleteCustomers(GetAllCustomers());
+            return !GetAllCustomers().Any();
+        }
+
+        private static bool AdditionStatefulTest1()
+        {
             int customersAmount = 3;
             AddCustomers(customersAmount);
-            IEnumerable<Customer> customers = GetAllCustomers();
+            var customers = GetAllCustomers();
             return customers.All(c => c != null) && customers.Count() == customersAmount;
+        }
+
+        private static void DeleteCustomers(IEnumerable<Customer> customers)
+        {
+            foreach (Customer customer in customers)
+            {
+                DeleteCustomerDisconnected(customer);
+            }
+        }
+
+        private static void DeleteCustomerDisconnected(Customer customer)
+        {
+            using (var context = new NotesEntities())
+            {
+                context.Entry(customer).State = System.Data.Entity.EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
         private static void AddCustomers(int times)
         {
-            using (var context = new NotesDBContext())
+            for (int i = 0; i < times; ++i)
             {
-                for (int i = 0; i < times; ++i)
-                {
-                    AddCustomer(context);
-                }
+                AddCustomerDisconnected();
             }
         }
 
-        private static void AddCustomer(NotesDBContext context)
+        private static void AddCustomerDisconnected()
         {
-            context.Customers.Add(GenerateCustomer());
-            context.SaveChanges();
+            var customer = GenerateCustomer();
+            using (var context = new NotesEntities())
+            {
+                context.Customers.Add(customer);
+                context.SaveChanges();
+            }
         }
 
         private static Customer GenerateCustomer()
         {
-            return new Customer($"customer{_freeNumber++}", $"{_freeNumber++}");
+            return new Customer { Id = System.Guid.NewGuid(), Login = $"customer{_freeNumber++}", Password = $"{_freeNumber++}" };
         }
 
-        private static IEnumerable<Customer> GetAllCustomers()
+        private static List<Customer> GetAllCustomers()
         {
-            using (var context = new NotesDBContext())
+            using (var context = new NotesEntities())
             {
                 return context.Customers.ToList();
             }
