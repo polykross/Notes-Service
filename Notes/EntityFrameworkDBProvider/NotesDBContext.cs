@@ -1,15 +1,21 @@
 ﻿using Notes.DBModels;
 using Notes.EntityFrameworkDBProvider.ModelConfiguration;
 using System.Data.Entity;
+using Notes.EntityFrameworkDBProvider.Migrations;
 
 namespace Notes.EntityFrameworkDBProvider
 {
     public class NotesDBContext : DbContext
     {
+        public NotesDBContext() : base("NotesDB")
+        {
+
+        }
+
         public NotesDBContext(string nameOrConnectionString = "NotesDB") : base(nameOrConnectionString)
         {
-            // Database.SetInitializer(new MigrateDatabaseToLatestVersion<NotesDBContext, Configuration>());
-            // Configuration.ProxyCreationEnabled = true;
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<NotesDBContext, Configuration>());
+            Configuration.ProxyCreationEnabled = true;
         }
 
         public DbSet<Customer> Customers { get; set; }

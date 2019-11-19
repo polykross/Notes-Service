@@ -50,6 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201911190836312_NotesMigration.cs" />
+    <Compile Include="Migrations\201911190836312_NotesMigration.Designer.cs">
+      <DependentUpon>201911190836312_NotesMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelConfiguration\CustomerConfiguration.cs" />
     <Compile Include="ModelConfiguration\NoteConfiguration.cs" />
     <Compile Include="NotesDBContext.cs" />
@@ -67,6 +72,10 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911190836312_NotesMigration.resx">
+      <DependentUpon>201911190836312_NotesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

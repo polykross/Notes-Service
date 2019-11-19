@@ -16,23 +16,23 @@ namespace Notes.EntityFrameworkDBProvider.Tests
         [TestCleanup]
         public void RemoveEveryCustomer()
         {
-            DeleteCustomers(GetAllCustomers());
+            DeleteCustomersDisconnected(GetAllCustomers());
         }
 
         [TestMethod]
-        public void CustomersAdditionTest()
+        public void CustomersDisconnectedAdditionTest()
         {
             int customersAmount = 3;
-            AddCustomers(customersAmount);
+            AddCustomersDisconnected(customersAmount);
             var customers = GetAllCustomers();
             Assert.IsTrue(customers.All(c => c != null) && customers.Count() == customersAmount);
         }
 
         [TestMethod]
-        public void CustomersRemovalTest()
+        public void CustomersDisconnectedRemovalTest()
         {
-            AddCustomers(10);
-            DeleteCustomers(GetAllCustomers());
+            AddCustomersDisconnected(10);
+            DeleteCustomersDisconnected(GetAllCustomers());
             Assert.IsTrue(!GetAllCustomers().Any());
         }
 
@@ -40,11 +40,17 @@ namespace Notes.EntityFrameworkDBProvider.Tests
         public void CustomersFetchingTest()
         {
             int customersAmount = 10;
-            AddCustomers(customersAmount);
+            AddCustomersDisconnected(customersAmount);
             Assert.AreEqual(GetAllCustomers().Count, customersAmount);
         }
 
-        private void DeleteCustomers(IEnumerable<Customer> customers)
+        [TestMethod]
+        public void CustomerDisconnectedEditingTest()
+        {
+
+        }
+
+        private void DeleteCustomersDisconnected(IEnumerable<Customer> customers)
         {
             foreach (Customer customer in customers)
             {
@@ -61,7 +67,7 @@ namespace Notes.EntityFrameworkDBProvider.Tests
             }
         }
 
-        private void AddCustomers(int times)
+        private void AddCustomersDisconnected(int times)
         {
             for (int i = 0; i < times; ++i)
             {
@@ -69,7 +75,7 @@ namespace Notes.EntityFrameworkDBProvider.Tests
             }
         }
 
-        private void AddCustomerDisconnected()
+        private Customer AddCustomerDisconnected()
         {
             var customer = GenerateCustomer();
             using (var context = GetContext())
@@ -77,6 +83,8 @@ namespace Notes.EntityFrameworkDBProvider.Tests
                 context.Customers.Add(customer);
                 context.SaveChanges();
             }
+
+            return customer;
         }
 
         private Customer GenerateCustomer()
