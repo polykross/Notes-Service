@@ -98,7 +98,7 @@ namespace Notes.EntityFrameworkDBProvider.Tests
 
         private Customer GenerateCustomer()
         {
-            return new Customer($"customer{_freeNumber++}", $"{_freeNumber++}");
+            return new Customer($"customer{_freeNumber++}", $"{_freeNumber}");
         }
 
         private List<Customer> GetAllCustomers()

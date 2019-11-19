@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDBProviderTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTService", "RESTService\RESTService.csproj", "{6D6963E9-B789-4B6D-B990-7311EC60ECED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{7492C490-A9A6-4207-A555-84114AEBE4F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6D6963E9-B789-4B6D-B990-7311EC60ECED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D6963E9-B789-4B6D-B990-7311EC60ECED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D6963E9-B789-4B6D-B990-7311EC60ECED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
