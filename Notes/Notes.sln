@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{75B6B9D4-A782-48C4-8BD7-721E43BD9C16}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBModels", "DBModels\DBModels.csproj", "{639F5A6C-5675-4C29-8B8E-2A261BD21C77}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBProviders", "DBProviders\DBProviders.csproj", "{2085D6F9-FE86-4ABD-B61E-9D611119BE2C}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDBProvider",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDBProviderTests", "EntityFrameworkDBProviderTests\EntityFrameworkDBProviderTests.csproj", "{5F6A6BED-CBD0-4A5E-8238-BFF7152AECC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFRESTService", "WCFRESTService\WCFRESTService.csproj", "{31CFF661-6560-42ED-83BF-8199F7EC8CE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{75B6B9D4-A782-48C4-8BD7-721E43BD9C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75B6B9D4-A782-48C4-8BD7-721E43BD9C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75B6B9D4-A782-48C4-8BD7-721E43BD9C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75B6B9D4-A782-48C4-8BD7-721E43BD9C16}.Release|Any CPU.Build.0 = Release|Any CPU
 		{639F5A6C-5675-4C29-8B8E-2A261BD21C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{639F5A6C-5675-4C29-8B8E-2A261BD21C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{639F5A6C-5675-4C29-8B8E-2A261BD21C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{5F6A6BED-CBD0-4A5E-8238-BFF7152AECC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F6A6BED-CBD0-4A5E-8238-BFF7152AECC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F6A6BED-CBD0-4A5E-8238-BFF7152AECC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31CFF661-6560-42ED-83BF-8199F7EC8CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31CFF661-6560-42ED-83BF-8199F7EC8CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31CFF661-6560-42ED-83BF-8199F7EC8CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31CFF661-6560-42ED-83BF-8199F7EC8CE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
