@@ -1,10 +1,10 @@
-﻿using Notes.DBModels;
-using Notes.EntityFrameworkDBProvider;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Notes.DBModels;
+using Notes.EntityFrameworkDBProvider;
 
-namespace Notes.WCFRESTService
+namespace Notes.RESTService
 {
     public class CustomerService : ICustomerService
     {

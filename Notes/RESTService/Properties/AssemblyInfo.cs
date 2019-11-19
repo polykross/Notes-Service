@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WCFRESTService")]
+[assembly: AssemblyTitle("RESTService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WCFRESTService")]
+[assembly: AssemblyProduct("RESTService")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("31cff661-6560-42ed-83bf-8199f7ec8ce7")]
+[assembly: Guid("6d6963e9-b789-4b6d-b990-7311ec60eced")]
 
 // Version information for an assembly consists of the following four values:
 //
