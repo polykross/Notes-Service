@@ -12,7 +12,7 @@ drop table if exists Customer;
 create table dbo.Customer
 (
     id       UNIQUEIDENTIFIER default NEWID(),
-    login    varchar(255) not null,
+    login    nvarchar(26) not null,
     password varchar(max) not null,
     constraint customer_pk primary key (id),
     constraint customer_login_uq unique (login)
@@ -21,7 +21,7 @@ create table dbo.Customer
 create table dbo.Note
 (
     id             UNIQUEIDENTIFIER default NEWID(),
-    title          varchar(255)     not null,
+    title          varchar(26)      not null,
     text           varchar(max)     not null,
     creation_date  datetime2        not null,
     last_edit_date datetime2        not null,
