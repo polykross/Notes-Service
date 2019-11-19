@@ -7,13 +7,13 @@ namespace Notes.EntityFrameworkDBProvider.ModelConfiguration
     {
         public CustomerConfiguration()
         {
-            ToTable("Customer");
+            ToTable("Customers");
             HasKey(customer => customer.Guid);
-            Property(customer => customer.Guid).HasColumnName("id").IsRequired();
-            Property(customer => customer.Login).HasColumnName("login")
+            Property(customer => customer.Guid).HasColumnName("Id").IsRequired();
+            Property(customer => customer.Login).HasColumnName("Login")
                 .HasColumnType("nvarchar")
                 .HasMaxLength(26).IsRequired();
-            Property(customer => customer.Password).HasColumnName("password").IsRequired();
+            Property(customer => customer.Password).HasColumnName("Password").IsRequired();
             HasIndex(customer => customer.Login).IsUnique(true);
         }
     }

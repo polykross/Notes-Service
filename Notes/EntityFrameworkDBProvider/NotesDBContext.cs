@@ -6,7 +6,7 @@ namespace Notes.EntityFrameworkDBProvider
 {
     public class NotesDBContext : DbContext
     {
-        public NotesDBContext() : base("NotesDB")
+        public NotesDBContext(string nameOrConnectionString = "NotesDB") : base(nameOrConnectionString)
         {
             // Database.SetInitializer(new MigrateDatabaseToLatestVersion<NotesDBContext, Configuration>());
             // Configuration.ProxyCreationEnabled = true;

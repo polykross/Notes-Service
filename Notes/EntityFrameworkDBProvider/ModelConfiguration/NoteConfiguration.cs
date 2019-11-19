@@ -7,13 +7,13 @@ namespace Notes.EntityFrameworkDBProvider.ModelConfiguration
     {
         public NoteConfiguration()
         {
-            ToTable("Note");
+            ToTable("Notes");
             HasKey(note => note.Guid);
-            Property(note => note.Guid).HasColumnName("id").IsRequired();
-            Property(note => note.Title).HasColumnName("title").IsRequired();
-            Property(note => note.Text).HasColumnName("text").IsRequired();
-            Property(note => note.CreationDate).HasColumnName("creation_date").HasColumnType("datetime2").IsRequired();
-            Property(note => note.LastEditDate).HasColumnName("last_edit_date").HasColumnType("datetime2").IsRequired();
+            Property(note => note.Guid).HasColumnName("Id").IsRequired();
+            Property(note => note.Title).HasColumnName("Title").IsRequired();
+            Property(note => note.Text).HasColumnName("Text").IsRequired();
+            Property(note => note.CreationDate).HasColumnName("CreationDate").HasColumnType("datetime2").IsRequired();
+            Property(note => note.LastEditDate).HasColumnName("LastEditDate").HasColumnType("datetime2").IsRequired();
         }
     }
 }

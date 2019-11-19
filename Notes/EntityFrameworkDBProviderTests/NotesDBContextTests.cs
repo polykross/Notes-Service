@@ -10,6 +10,7 @@ namespace Notes.EntityFrameworkDBProvider.Tests
     {
 
         private int _freeNumber;
+        private static string testingConnectionStringName = "NotesTestingDB";
 
         [TestInitialize]
         [TestCleanup]
@@ -53,7 +54,7 @@ namespace Notes.EntityFrameworkDBProvider.Tests
 
         private void DeleteCustomerDisconnected(Customer customer)
         {
-            using (var context = new NotesDBContext())
+            using (var context = GetContext())
             {
                 context.Entry(customer).State = System.Data.Entity.EntityState.Deleted;
                 context.SaveChanges();
@@ -71,7 +72,7 @@ namespace Notes.EntityFrameworkDBProvider.Tests
         private void AddCustomerDisconnected()
         {
             var customer = GenerateCustomer();
-            using (var context = new NotesDBContext())
+            using (var context = GetContext())
             {
                 context.Customers.Add(customer);
                 context.SaveChanges();
@@ -85,10 +86,15 @@ namespace Notes.EntityFrameworkDBProvider.Tests
 
         private List<Customer> GetAllCustomers()
         {
-            using (var context = new NotesDBContext())
+            using (var context = GetContext())
             {
                 return context.Customers.ToList();
             }
+        }
+
+        private NotesDBContext GetContext()
+        {
+            return new NotesDBContext(testingConnectionStringName);
         }
     }
 }
