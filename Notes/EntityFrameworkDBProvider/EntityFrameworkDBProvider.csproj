@@ -50,38 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs">
-      <DependentUpon>Notes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Note.cs">
-      <DependentUpon>Notes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Notes.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Notes.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Notes.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Notes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Notes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Notes.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="ModelConfiguration\CustomerConfiguration.cs" />
+    <Compile Include="ModelConfiguration\NoteConfiguration.cs" />
+    <Compile Include="NotesDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <EntityDeploy Include="Notes.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Notes.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Notes.edmx.diagram">
-      <DependentUpon>Notes.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -93,17 +67,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Notes.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Notes.edmx</DependentUpon>
-      <LastGenOutput>Notes.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Notes.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Notes.edmx</DependentUpon>
-      <LastGenOutput>Notes.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
