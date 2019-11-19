@@ -1,11 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Notes.EntityFrameworkDBProvider;
-using System;
+using Notes.DBModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Notes.DBModels;
 
 namespace Notes.EntityFrameworkDBProvider.Tests
 {

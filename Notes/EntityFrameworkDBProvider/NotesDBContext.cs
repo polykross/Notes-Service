@@ -1,6 +1,6 @@
 ﻿using Notes.DBModels;
-using System.Data.Entity;
 using Notes.EntityFrameworkDBProvider.ModelConfiguration;
+using System.Data.Entity;
 
 namespace Notes.EntityFrameworkDBProvider
 {
