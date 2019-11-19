@@ -47,7 +47,16 @@ namespace Notes.EntityFrameworkDBProvider.Tests
         [TestMethod]
         public void CustomerDisconnectedEditingTest()
         {
+            Customer addedCustomer = AddCustomerDisconnected();
+            addedCustomer.Password = "MyNonExistedPassword";
+            using (var context = GetContext())
+            {
+                context.Entry(addedCustomer).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
 
+            Customer editedCustomer = GetCustomerById(addedCustomer.Guid);
+            Assert.AreEqual(addedCustomer.Password, editedCustomer.Password);
         }
 
         private void DeleteCustomersDisconnected(IEnumerable<Customer> customers)
@@ -98,6 +107,16 @@ namespace Notes.EntityFrameworkDBProvider.Tests
             {
                 return context.Customers.ToList();
             }
+        }
+
+        private Customer GetCustomerById(System.Guid id)
+        {
+            using (var context = GetContext())
+            {
+                return (from c in context.Customers
+                    where c.Guid == id
+                    select c).FirstOrDefault();
+;           }
         }
 
         private NotesDBContext GetContext()
