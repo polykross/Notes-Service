@@ -13,6 +13,6 @@ namespace Notes.DBProviders
         void Delete<TObject>(IEnumerable<TObject> obj) where TObject : class, IDBModel;
         void Delete<TObject>(TObject obj) where TObject : class, IDBModel;
         void Add<TObject>(IEnumerable<TObject> obj) where TObject : class, IDBModel;
-        void Add<TObject>(TObject obj) where TObject : class, IDBModel;
+        bool Add<TObject>(TObject obj) where TObject : class, IDBModel;
     }
 }

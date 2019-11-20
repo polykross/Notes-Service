@@ -3,19 +3,23 @@ using Notes.DTO;
 using Notes.RESTService.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.ServiceModel.Web;
+using Notes.DBProviders;
+using Notes.EntityFrameworkDBProvider;
 
 namespace Notes.RESTService.Controller
 {
     public class CustomerController : ICustomerController
     {
         private readonly CustomerRepository _customerRepository = new CustomerRepository();
+        private readonly IDBProvider _dbProvider = new DBProviderDisconnected();
 
         public List<CustomerDTO> GetAllCustomers()
         {
             List<CustomerDTO> result = new List<CustomerDTO>();
-            _customerRepository.FindAllCustomers().ForEach(c => result.Add(new CustomerDTO(c.Login, c.Password)));
+            _dbProvider.SelectAll<Customer>().ToList().ForEach(c => result.Add(new CustomerDTO(c.Login, c.Password)));
             return result;
         }
 
@@ -24,7 +28,7 @@ namespace Notes.RESTService.Controller
             Customer customer;
             if (Guid.TryParse(id, out var newGuid))
             {
-                customer = _customerRepository.FindCustomerById(newGuid);
+                customer = _dbProvider.Select<Customer>(c => c.Guid == newGuid);
             }
             else
             {
@@ -41,7 +45,8 @@ namespace Notes.RESTService.Controller
 
         public OperationResult AddCustomer(CustomerDTO customerDto)
         {
-            var result = _customerRepository.AddCustomer(customerDto.Login, customerDto.Password);
+            var customer = new Customer(customerDto.Login, customerDto.Password);
+            var result = _dbProvider.Add(customer);
             return new OperationResult(result);
         }
     }

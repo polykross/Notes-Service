@@ -77,14 +77,24 @@ namespace Notes.EntityFrameworkDBProvider
             }
         }
 
-        public void Add<TObject>(TObject obj) where TObject : class, IDBModel
+        public bool Add<TObject>(TObject obj) where TObject : class, IDBModel
         {
+            var result = true;
             _contextUtil.DoWithContext(ctx =>
                 {
-                    ctx.Set<TObject>().Add(obj);
-                    ctx.SaveChanges();
+                    try
+                    {
+                        ctx.Set<TObject>().Add(obj);
+                        ctx.SaveChanges();
+                    }
+                    catch
+                    {
+                        result = false;
+                        ctx.Dispose();
+                    }
                 }
             );
+            return result;
         }
     }
 }
