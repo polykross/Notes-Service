@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Notes.Server.WCFServerIIS.NotesServiceIIS" CodeBehind="NotesServiceIIS.svc.cs" %>
