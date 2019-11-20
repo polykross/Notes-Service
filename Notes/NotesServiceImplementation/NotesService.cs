@@ -6,7 +6,7 @@ using Notes.Server.WCFServerInterface;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Notes.Service.NotesServiceImplementation
+namespace Notes.Server.NotesServiceImplementation
 {
     public class NotesService : INotesService
     {
