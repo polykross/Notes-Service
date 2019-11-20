@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Notes.DTO;
 
 namespace Notes.RESTService.Repository
 {

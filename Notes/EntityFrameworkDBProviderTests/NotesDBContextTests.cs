@@ -1,7 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Notes.DBModels;
 using System.Collections.Generic;
 using System.Linq;
+using Notes.DBProviders;
 
 namespace Notes.EntityFrameworkDBProvider.Tests
 {
@@ -10,7 +12,7 @@ namespace Notes.EntityFrameworkDBProvider.Tests
     {
 
         private int _freeNumber;
-        private static string testingConnectionStringName = "NotesTestingDB";
+        private readonly IDBProvider _provider = new DBProviderDisconnected();
 
         [TestInitialize]
         [TestCleanup]
@@ -48,32 +50,10 @@ namespace Notes.EntityFrameworkDBProvider.Tests
         public void CustomerDisconnectedEditingTest()
         {
             Customer addedCustomer = AddCustomerDisconnected();
-            addedCustomer.Password = "MyNonExistedPassword";
-            using (var context = GetContext())
-            {
-                context.Entry(addedCustomer).State = System.Data.Entity.EntityState.Modified;
-                context.SaveChanges();
-            }
-
+            addedCustomer.Password = "MyNonExistingPassword";
+            EditCustomerDisconnected(addedCustomer);
             Customer editedCustomer = GetCustomerById(addedCustomer.Guid);
             Assert.AreEqual(addedCustomer.Password, editedCustomer.Password);
-        }
-
-        private void DeleteCustomersDisconnected(IEnumerable<Customer> customers)
-        {
-            foreach (Customer customer in customers)
-            {
-                DeleteCustomerDisconnected(customer);
-            }
-        }
-
-        private void DeleteCustomerDisconnected(Customer customer)
-        {
-            using (var context = GetContext())
-            {
-                context.Entry(customer).State = System.Data.Entity.EntityState.Deleted;
-                context.SaveChanges();
-            }
         }
 
         private void AddCustomersDisconnected(int times)
@@ -87,41 +67,41 @@ namespace Notes.EntityFrameworkDBProvider.Tests
         private Customer AddCustomerDisconnected()
         {
             var customer = GenerateCustomer();
-            using (var context = GetContext())
-            {
-                context.Customers.Add(customer);
-                context.SaveChanges();
-            }
-
+            _provider.Add(customer);
             return customer;
+        }
+
+        private void EditCustomerDisconnected(Customer addedCustomer)
+        {
+            _provider.Update(addedCustomer);
+        }
+
+        private void DeleteCustomersDisconnected(IEnumerable<Customer> customers)
+        {
+            foreach (Customer customer in customers)
+            {
+                DeleteCustomerDisconnected(customer);
+            }
+        }
+
+        private void DeleteCustomerDisconnected(Customer customer)
+        {
+            _provider.Delete(customer);
+        }
+
+        private List<Customer> GetAllCustomers()
+        {
+            return _provider.SelectAll<Customer>().ToList();
+        }
+
+        private Customer GetCustomerById(System.Guid id)
+        {
+            return _provider.Select<Customer>(c => c.Guid.ToString() == id.ToString());
         }
 
         private Customer GenerateCustomer()
         {
             return new Customer($"customer{_freeNumber++}", $"{_freeNumber}");
-        }
-
-        private List<Customer> GetAllCustomers()
-        {
-            using (var context = GetContext())
-            {
-                return context.Customers.ToList();
-            }
-        }
-
-        private Customer GetCustomerById(System.Guid id)
-        {
-            using (var context = GetContext())
-            {
-                return (from c in context.Customers
-                    where c.Guid == id
-                    select c).FirstOrDefault();
-;           }
-        }
-
-        private NotesDBContext GetContext()
-        {
-            return new NotesDBContext(testingConnectionStringName);
         }
     }
 }

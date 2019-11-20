@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextUtil.cs" />
+    <Compile Include="DBProviderDisconnected.cs" />
     <Compile Include="Migrations\201911190836312_NotesMigration.cs" />
     <Compile Include="Migrations\201911190836312_NotesMigration.Designer.cs">
       <DependentUpon>201911190836312_NotesMigration.cs</DependentUpon>
@@ -67,6 +69,10 @@
     <ProjectReference Include="..\DBModels\DBModels.csproj">
       <Project>{639f5a6c-5675-4c29-8b8e-2a261bd21c77}</Project>
       <Name>DBModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBProviders\DBProviders.csproj">
+      <Project>{2085D6F9-FE86-4ABD-B61E-9D611119BE2C}</Project>
+      <Name>DBProviders</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
