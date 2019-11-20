@@ -1,6 +1,7 @@
 ﻿using Notes.DBModels;
 using System.Collections.Generic;
 using System.ServiceModel;
+using Notes.DTO;
 
 namespace Notes.Server.WCFServerInterface
 {
@@ -8,9 +9,9 @@ namespace Notes.Server.WCFServerInterface
     public interface INotesService
     {
         [OperationContract]
-        IEnumerable<Customer> GetAllCustomers();
+        IEnumerable<CustomerDTO> GetAllCustomers();
 
         [OperationContract]
-        void AddCustomer(Customer customer);
+        void AddCustomer(CustomerDTO customer);
     }
 }
