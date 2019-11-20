@@ -46,10 +46,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DBModels\DBModels.csproj">
-      <Project>{639f5a6c-5675-4c29-8b8e-2a261bd21c77}</Project>
-      <Name>DBModels</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{7492c490-a9a6-4207-a555-84114aebe4f1}</Project>
       <Name>DTO</Name>

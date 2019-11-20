@@ -1,5 +1,4 @@
-﻿using Notes.DBModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
 using Notes.DTO;
 
