@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Notes.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Notes.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfCustomerDTO">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Notes.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Notes.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ClientCustomerDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomerDTO" nillable="true" type="tns:CustomerDTO" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfCustomerDTO" nillable="true" type="tns:ArrayOfCustomerDTO" />
-  <xs:complexType name="CustomerDTO">
+  <xs:element name="ClientCustomerDTO" nillable="true" type="tns:ClientCustomerDTO" />
+  <xs:complexType name="ServiceCustomerDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="lastLoginDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceCustomerDTO" nillable="true" type="tns:ServiceCustomerDTO" />
+  <xs:complexType name="AuthorizationDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="CustomerDTO" nillable="true" type="tns:CustomerDTO" />
+  <xs:element name="AuthorizationDTO" nillable="true" type="tns:AuthorizationDTO" />
+  <xs:complexType name="ArrayOfShortNoteDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShortNoteDTO" nillable="true" type="tns:ShortNoteDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShortNoteDTO" nillable="true" type="tns:ArrayOfShortNoteDTO" />
+  <xs:complexType name="ShortNoteDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ShortNoteDTO" nillable="true" type="tns:ShortNoteDTO" />
+  <xs:complexType name="NoteDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="creationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="lastEditDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NoteDTO" nillable="true" type="tns:NoteDTO" />
 </xs:schema>

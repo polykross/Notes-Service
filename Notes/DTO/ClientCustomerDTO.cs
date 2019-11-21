@@ -1,9 +1,14 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Notes.DTO
 {
     [DataContract]
-    public class CustomerDTO
+    public class ClientCustomerDTO
     {
         #region Fields
         [DataMember(Name = "login")]
@@ -51,11 +56,11 @@ namespace Notes.DTO
         #endregion
 
         #region Constructor
-        public CustomerDTO()
+        public ClientCustomerDTO()
         {
         }
 
-        public CustomerDTO(string login, string password, string firstName, string lastName, string email)
+        public ClientCustomerDTO(string login, string password, string firstName, string lastName, string email)
         {
             _login = login;
             _password = password;

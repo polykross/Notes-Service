@@ -69,6 +69,17 @@ namespace Notes.EntityFrameworkDBProvider
             );
         }
 
+        public void DeleteById<TObject>(Guid id) where TObject : class, IDBModel
+        {
+            _contextUtil.DoWithContext(ctx =>
+                {
+                    var deletable = ctx.Set<TObject>().Find(id);
+                    ctx.Entry(deletable).State = EntityState.Deleted;
+                    ctx.SaveChanges();
+                }
+            );
+        }
+
         public void Add<TObject>(IEnumerable<TObject> obj) where TObject : class, IDBModel
         {
             foreach (var dbModel in obj)
@@ -77,9 +88,8 @@ namespace Notes.EntityFrameworkDBProvider
             }
         }
 
-        public bool Add<TObject>(TObject obj) where TObject : class, IDBModel
+        public void Add<TObject>(TObject obj) where TObject : class, IDBModel
         {
-            var result = true;
             _contextUtil.DoWithContext(ctx =>
                 {
                     try
@@ -89,12 +99,10 @@ namespace Notes.EntityFrameworkDBProvider
                     }
                     catch
                     {
-                        result = false;
                         ctx.Dispose();
                     }
                 }
             );
-            return result;
         }
     }
 }

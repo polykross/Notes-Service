@@ -100,9 +100,9 @@
       <Project>{2085d6f9-fe86-4abd-b61e-9d611119be2c}</Project>
       <Name>DBProviders</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DTO\DTO.csproj">
+    <ProjectReference Include="..\DTO\CommunicationContract.csproj">
       <Project>{7492c490-a9a6-4207-a555-84114aebe4f1}</Project>
-      <Name>DTO</Name>
+      <Name>CommunicationContract</Name>
     </ProjectReference>
     <ProjectReference Include="..\EntityFrameworkDBProvider\EntityFrameworkDBProvider.csproj">
       <Project>{23288084-96f7-467b-b952-d27620ad2a0b}</Project>

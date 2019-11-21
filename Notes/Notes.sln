@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDBProvider",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDBProviderTests", "EntityFrameworkDBProviderTests\EntityFrameworkDBProviderTests.csproj", "{5F6A6BED-CBD0-4A5E-8238-BFF7152AECC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{7492C490-A9A6-4207-A555-84114AEBE4F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationContract", "DTO\CommunicationContract.csproj", "{7492C490-A9A6-4207-A555-84114AEBE4F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFServerInterface", "WCFServerInterface\WCFServerInterface.csproj", "{63BFB7E2-DCEA-4EDB-8910-D763A28819DB}"
 EndProject

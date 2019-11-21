@@ -76,27 +76,33 @@ namespace Notes.DBModels
         #endregion
 
         #region Constructor
+        public Customer(Guid guid, string firstName, string lastName, string login, string email, string password) : this()
+        {
+            _guid = guid;
+            _firstName = firstName;
+            _lastName = lastName;
+            _login = login;
+            _email = email;
+            _password = password;
+        }
 
-        public Customer(string login, string password) : this()
+        public Customer(string firstName, string lastName, string login, string email, string password) : this()
         {
             _guid = Guid.NewGuid();
+            _firstName = firstName;
+            _lastName = lastName;
             _login = login;
-            SetPassword(password);
+            _email = email;
+            _password = password;
         }
 
         public Customer()
         {
             _notes = new List<Note>();
         }
-
         #endregion
 
-        private void SetPassword(string password)
-        {
-            _password = password;
-        }
-
-        internal bool CheckPassword(string password)
+        public bool CheckPassword(string password)
         {
             return _password == password;
         }

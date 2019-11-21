@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Notes.DTO;
 using Notes.EntityFrameworkDBProvider;
 using Notes.Tester.NotesServiceIIS;
 using Customer = Notes.DBModels.Customer;
@@ -16,10 +17,12 @@ namespace Notes.Tester
             try
             {
                 serverClient = new NotesServiceIIS.NotesServiceClient("BasicHttpBinding_INotesService");
-                var customer = new CustomerDTO {login = "login", password = "password"};
-                serverClient.AddCustomer(customer);
-                var customers = serverClient.GetAllCustomers();
-                customers = serverClient.GetAllCustomers();
+                ServiceCustomerDTO registered = serverClient.CustomerRegistration(new ClientCustomerDTO("login1", "password1", "firstName1",
+                    "lastName1", "email1"));
+                if (registered != null)
+                {
+                    ServiceCustomerDTO authorized = serverClient.Login(new AuthorizationDTO(registered.Login, registered.Password));
+                }
             }
             finally
             {

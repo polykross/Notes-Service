@@ -7,32 +7,112 @@
       <xsd:import schemaLocation="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Notes.DTO" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="INotesService_GetAllCustomers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCustomers" />
+  <wsdl:message name="INotesService_CustomerRegistration_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerRegistration" />
   </wsdl:message>
-  <wsdl:message name="INotesService_GetAllCustomers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCustomersResponse" />
+  <wsdl:message name="INotesService_CustomerRegistration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerRegistrationResponse" />
   </wsdl:message>
-  <wsdl:message name="INotesService_AddCustomer_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddCustomer" />
+  <wsdl:message name="INotesService_UpdateCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomer" />
   </wsdl:message>
-  <wsdl:message name="INotesService_AddCustomer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddCustomerResponse" />
+  <wsdl:message name="INotesService_UpdateCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_DeleteCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomer" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_DeleteCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_GetCustomersShortNotes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomersShortNotes" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_GetCustomersShortNotes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomersShortNotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_AddNote_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNote" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_AddNote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_EditNote_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditNote" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_EditNote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_EditNoteTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditNoteTitle" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_EditNoteTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditNoteTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_EditNoteText_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditNoteText" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_EditNoteText_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditNoteTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_GetNote_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNote" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_GetNote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoteResponse" />
   </wsdl:message>
   <wsdl:portType name="INotesService">
-    <wsdl:operation name="GetAllCustomers">
-      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/GetAllCustomers" message="tns:INotesService_GetAllCustomers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/GetAllCustomersResponse" message="tns:INotesService_GetAllCustomers_OutputMessage" />
+    <wsdl:operation name="CustomerRegistration">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/CustomerRegistration" message="tns:INotesService_CustomerRegistration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/CustomerRegistrationResponse" message="tns:INotesService_CustomerRegistration_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddCustomer">
-      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/AddCustomer" message="tns:INotesService_AddCustomer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/AddCustomerResponse" message="tns:INotesService_AddCustomer_OutputMessage" />
+    <wsdl:operation name="UpdateCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/UpdateCustomer" message="tns:INotesService_UpdateCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/UpdateCustomerResponse" message="tns:INotesService_UpdateCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/DeleteCustomer" message="tns:INotesService_DeleteCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/DeleteCustomerResponse" message="tns:INotesService_DeleteCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/Login" message="tns:INotesService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/LoginResponse" message="tns:INotesService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersShortNotes">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/GetCustomersShortNotes" message="tns:INotesService_GetCustomersShortNotes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/GetCustomersShortNotesResponse" message="tns:INotesService_GetCustomersShortNotes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNote">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/AddNote" message="tns:INotesService_AddNote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/AddNoteResponse" message="tns:INotesService_AddNote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditNote">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/EditNote" message="tns:INotesService_EditNote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/EditNoteResponse" message="tns:INotesService_EditNote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditNoteTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/EditNoteTitle" message="tns:INotesService_EditNoteTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/EditNoteTitleResponse" message="tns:INotesService_EditNoteTitle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditNoteText">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/EditNoteText" message="tns:INotesService_EditNoteText_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/EditNoteTextResponse" message="tns:INotesService_EditNoteText_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNote">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/GetNote" message="tns:INotesService_GetNote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/GetNoteResponse" message="tns:INotesService_GetNote_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_INotesService" type="tns:INotesService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAllCustomers">
-      <soap:operation soapAction="http://tempuri.org/INotesService/GetAllCustomers" style="document" />
+    <wsdl:operation name="CustomerRegistration">
+      <soap:operation soapAction="http://tempuri.org/INotesService/CustomerRegistration" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -40,8 +120,80 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddCustomer">
-      <soap:operation soapAction="http://tempuri.org/INotesService/AddCustomer" style="document" />
+    <wsdl:operation name="UpdateCustomer">
+      <soap:operation soapAction="http://tempuri.org/INotesService/UpdateCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <soap:operation soapAction="http://tempuri.org/INotesService/DeleteCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/INotesService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomersShortNotes">
+      <soap:operation soapAction="http://tempuri.org/INotesService/GetCustomersShortNotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNote">
+      <soap:operation soapAction="http://tempuri.org/INotesService/AddNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditNote">
+      <soap:operation soapAction="http://tempuri.org/INotesService/EditNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditNoteTitle">
+      <soap:operation soapAction="http://tempuri.org/INotesService/EditNoteTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditNoteText">
+      <soap:operation soapAction="http://tempuri.org/INotesService/EditNoteText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNote">
+      <soap:operation soapAction="http://tempuri.org/INotesService/GetNote" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

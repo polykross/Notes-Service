@@ -59,6 +59,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Notes.DTO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -82,9 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\NotesServiceIIS\Notes.Tester.NotesServiceIIS.CustomerDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS.wsdl" />
     <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS.xsd">
       <SubType>Designer</SubType>
@@ -96,6 +94,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Notes.DTO.NoteDTO.datasource" />
+    <None Include="Properties\DataSources\Notes.DTO.ServiceCustomerDTO.datasource" />
+    <None Include="Properties\DataSources\Notes.DTO.ShortNoteDTO.datasource" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -118,9 +119,9 @@
       <Project>{2085d6f9-fe86-4abd-b61e-9d611119be2c}</Project>
       <Name>DBProviders</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DTO\DTO.csproj">
+    <ProjectReference Include="..\DTO\CommunicationContract.csproj">
       <Project>{7492c490-a9a6-4207-a555-84114aebe4f1}</Project>
-      <Name>DTO</Name>
+      <Name>CommunicationContract</Name>
     </ProjectReference>
     <ProjectReference Include="..\EntityFrameworkDBProvider\EntityFrameworkDBProvider.csproj">
       <Project>{23288084-96f7-467b-b952-d27620ad2a0b}</Project>

@@ -38,12 +38,18 @@ namespace Notes.DTO
             set => _text = value;
         }
 
+        /// <summary>
+        /// Creation date in UTC
+        /// </summary>
         public DateTime CreationDate
         {
             get => _creationDate;
             set => _creationDate = value;
         }
 
+        /// <summary>
+        /// Last edit date in UTC
+        /// </summary>
         public DateTime LastEditDate
         {
             get => _lastEditDate;
