@@ -34,13 +34,25 @@ namespace Notes.IntegrationTests
         public void CustomersRegistrationTest()
         {
             ServiceCustomerDTO registered = _client.CustomerRegistration(BuildClientCustomerDTO());
+            ServiceCustomerDTO authorized = null;
             if (registered != null)
             {
-                ServiceCustomerDTO authorized = _client.Login(BuildAuthorizationDTO(registered));
-                Assert.IsNotNull(authorized);
+                authorized = _client.Login(BuildAuthorizationDTO(registered));
             }
-            Assert.IsNotNull(registered);
+            Assert.IsNotNull(authorized);
         }
+
+        [TestMethod]
+        public void CustomersRegistrationFailureTest()
+        {
+            var builtDTO = BuildClientCustomerDTO();
+            // First registration - OK
+            _client.CustomerRegistration(builtDTO);
+            // Second registration with same data - Failure
+            Assert.IsNull(_client.CustomerRegistration(builtDTO));
+        }
+
+
 
         #region Utils
         private AuthorizationDTO BuildAuthorizationDTO(ServiceCustomerDTO customer)
