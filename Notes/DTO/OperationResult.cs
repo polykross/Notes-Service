@@ -13,10 +13,6 @@ namespace Notes.DTO
             _result = result;
         }
 
-        public bool Result
-        {
-            get => _result;
-            set => _result = value;
-        }
+        public bool Result => _result;
     }
 }

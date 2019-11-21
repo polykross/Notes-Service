@@ -26,22 +26,13 @@ namespace Notes.DBModels
         #region Properties
         public Guid Guid
         {
-            get
-            {
-                return _guid;
-            }
-            private set
-            {
-                _guid = value;
-            }
+            get => _guid;
+            private set => _guid = value;
         }
 
         public string Title
         {
-            get
-            {
-                return _title;
-            }
+            get => _title;
             private set
             {
                 // TODO Process lastEditDate
@@ -51,10 +42,7 @@ namespace Notes.DBModels
 
         public string Text
         {
-            get
-            {
-                return _text;
-            }
+            get => _text;
             private set
             {
                 // TODO Process lastEditDate
@@ -64,26 +52,14 @@ namespace Notes.DBModels
 
         public DateTime CreationDate
         {
-            get
-            {
-                return _creationDate;
-            }
-            private set
-            {
-                _creationDate = value;
-            }
+            get => _creationDate;
+            private set => _creationDate = value;
         }
 
         public DateTime LastEditDate
         {
-            get
-            {
-                return _lastEditDate;
-            }
-            private set
-            {
-                _lastEditDate = value;
-            }
+            get => _lastEditDate;
+            private set => _lastEditDate = value;
         }
 
         public Guid OwnerGuid

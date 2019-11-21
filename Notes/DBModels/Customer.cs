@@ -11,9 +11,17 @@ namespace Notes.DBModels
         [DataMember]
         private Guid _guid;
         [DataMember]
+        private string _firstName;
+        [DataMember]
+        private string _lastName;
+        [DataMember]
         private string _login;
         [DataMember]
+        private string _email;
+        [DataMember]
         private string _password;
+        [DataMember]
+        private DateTime _lastLoginDate;
         [DataMember]
         private List<Note> _notes;
         #endregion
@@ -21,40 +29,49 @@ namespace Notes.DBModels
         #region Properties
         public Guid Guid
         {
-            get
-            {
-                return _guid;
-            }
-            private set
-            {
-                _guid = value;
-            }
+            get => _guid;
+            private set => _guid = value;
+        }
+        public string FirstName
+        {
+            get => _firstName;
+            private set => _firstName = value;
+        }
+
+        public string LastName
+        {
+            get => _lastName;
+            private set => _lastName = value;
         }
 
         public string Login
         {
-            get
-            {
-                return _login;
-            }
-            private set
-            {
-                _login = value;
-            }
+            get => _login;
+            private set => _login = value;
+        }
+
+        public string Email
+        {
+            get => _email;
+            private set => _email = value;
         }
 
         public string Password
         {
-            get
-            {
-                return _password;
-            }
-            set { _password = value; }
+            get => _password;
+            set => _password = value;
         }
+
         public virtual List<Note> Notes
         {
             get => _notes;
             set => _notes = value;
+        }
+
+        public DateTime LastLoginDate
+        {
+            get => _lastLoginDate;
+            private set => _lastLoginDate = value;
         }
         #endregion
 
@@ -76,13 +93,11 @@ namespace Notes.DBModels
 
         private void SetPassword(string password)
         {
-            //TODO Add encryption
             _password = password;
         }
 
         internal bool CheckPassword(string password)
         {
-            //TODO Compare encrypted passwords
             return _password == password;
         }
 
