@@ -1,9 +1,9 @@
 /*
 To drop database execute:
-drop database if exists Notes;
+drop database if exists UKMA2019NotesDB;
 
 To create database execute:
-create database Notes;
+create database UKMA2019NotesDB;
 */
 
 drop table if exists Note;
