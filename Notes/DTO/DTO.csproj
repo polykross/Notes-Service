@@ -45,8 +45,9 @@
   <ItemGroup>
     <Compile Include="AuthorizationDTO.cs" />
     <Compile Include="CustomerDTO.cs" />
-    <Compile Include="OperationResult.cs" />
+    <Compile Include="OperationResultDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShortNoteDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,6 +25,6 @@ namespace Notes.RESTService.Controller
         [WebInvoke(Method = "POST", UriTemplate = "AddCustomer",
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json)]
-        OperationResult AddCustomer(CustomerDTO customerDto);
+        OperationResultDTO AddCustomer(CustomerDTO customerDto);
     }
 }

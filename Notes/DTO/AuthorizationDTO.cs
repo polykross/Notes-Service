@@ -3,22 +3,34 @@
 namespace Notes.DTO
 {
     [DataContract]
-    class AuthorizationDTO
+    public class AuthorizationDTO
     {
         #region Fields
-        [DataMember]
+        [DataMember(Name = "login")]
         private string _login;
-        [DataMember]
+        [DataMember(Name = "password")]
         private string _password;
         #endregion
 
         #region Properties
-        public string Login => _login;
+        public string Login
+        {
+            get => _login;
+            set => _login = value;
+        }
 
-        public string Password => _password;
+        public string Password
+        {
+            get => _password;
+            set => _password = value;
+        }
         #endregion
 
         #region Constructor
+        public AuthorizationDTO()
+        {
+        }
+
         public AuthorizationDTO(string login, string password)
         {
             _login = login;

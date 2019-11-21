@@ -19,15 +19,35 @@ namespace Notes.DTO
         #endregion
 
         #region Properties
-        public string Login => _login;
+        public string Login
+        {
+            get => _login;
+            set => _login = value;
+        }
 
-        public string Password => _password;
+        public string Password
+        {
+            get => _password;
+            set => _password = value;
+        }
 
-        public string FirstName => _firstName;
+        public string FirstName
+        {
+            get => _firstName;
+            set => _firstName = value;
+        }
 
-        public string LastName => _lastName;
+        public string LastName
+        {
+            get => _lastName;
+            set => _lastName = value;
+        }
 
-        public string Email => _email;
+        public string Email
+        {
+            get => _email;
+            set => _email = value;
+        }
         #endregion
 
         #region Constructor

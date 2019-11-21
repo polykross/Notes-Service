@@ -43,11 +43,11 @@ namespace Notes.RESTService.Controller
             return customer;
         }
 
-        public OperationResult AddCustomer(CustomerDTO customerDto)
+        public OperationResultDTO AddCustomer(CustomerDTO customerDto)
         {
             var customer = new Customer(customerDto.Login, customerDto.Password);
             var result = _dbProvider.Add(customer);
-            return new OperationResult(result);
+            return new OperationResultDTO(result);
         }
     }
 }
