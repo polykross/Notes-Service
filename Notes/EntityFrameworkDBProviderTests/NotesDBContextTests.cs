@@ -1,11 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Notes.DBModels;
+using Notes.DBProviders;
+using Notes.EntityFrameworkDBProvider;
 using System.Collections.Generic;
 using System.Linq;
-using Notes.DBProviders;
 
-namespace Notes.EntityFrameworkDBProvider.Tests
+namespace Notes.IntegrationTests
 {
     [TestClass]
     public class NotesDBContextTests
@@ -56,6 +56,7 @@ namespace Notes.EntityFrameworkDBProvider.Tests
             Assert.AreEqual(addedCustomer.Password, editedCustomer.Password);
         }
 
+        #region Utils
         private void AddCustomersDisconnected(int times)
         {
             for (int i = 0; i < times; ++i)
@@ -103,5 +104,6 @@ namespace Notes.EntityFrameworkDBProvider.Tests
         {
             return new Customer($"customer{_freeNumber++}", $"{_freeNumber}", $"{_freeNumber}", $"{_freeNumber}", $"{_freeNumber}");
         }
+        #endregion
     }
 }

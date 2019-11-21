@@ -7,9 +7,9 @@ namespace Notes.DTO
     public class ShortNoteDTO
     {
         #region Fields
-        [DataMember(Name = "guid")]
+        [DataMember(Name = "Guid")]
         private Guid _guid;
-        [DataMember(Name = "title")]
+        [DataMember(Name = "Title")]
         private string _title;
         #endregion
 

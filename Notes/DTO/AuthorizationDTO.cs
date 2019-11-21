@@ -6,9 +6,9 @@ namespace Notes.DTO
     public class AuthorizationDTO
     {
         #region Fields
-        [DataMember(Name = "login")]
+        [DataMember(Name = "Login")]
         private string _login;
-        [DataMember(Name = "password")]
+        [DataMember(Name = "Password")]
         private string _password;
         #endregion
 

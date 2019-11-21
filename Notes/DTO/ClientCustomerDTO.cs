@@ -11,15 +11,15 @@ namespace Notes.DTO
     public class ClientCustomerDTO
     {
         #region Fields
-        [DataMember(Name = "login")]
+        [DataMember(Name = "Login")]
         private string _login;
-        [DataMember(Name = "password")]
+        [DataMember(Name = "Password")]
         private string _password;
-        [DataMember(Name = "firstName")]
+        [DataMember(Name = "FirstName")]
         private string _firstName;
-        [DataMember(Name = "lastName")]
+        [DataMember(Name = "LastName")]
         private string _lastName;
-        [DataMember(Name = "email")]
+        [DataMember(Name = "Email")]
         private string _email;
         #endregion
 

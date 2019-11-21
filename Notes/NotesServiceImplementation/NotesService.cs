@@ -1,9 +1,9 @@
-﻿using System;
-using Notes.DBModels;
+﻿using Notes.DBModels;
 using Notes.DBProviders;
 using Notes.DTO;
 using Notes.EntityFrameworkDBProvider;
 using Notes.Server.WCFServerInterface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -7,15 +7,15 @@ namespace Notes.DTO
     public class NoteDTO
     {
         #region Fields
-        [DataMember(Name = "guid")]
+        [DataMember(Name = "Guid")]
         private Guid _guid;
-        [DataMember(Name = "title")]
+        [DataMember(Name = "Title")]
         private string _title;
-        [DataMember(Name = "text")]
+        [DataMember(Name = "Text")]
         private string _text;
-        [DataMember(Name = "creationDate")]
+        [DataMember(Name = "CreationDate")]
         private DateTime _creationDate;
-        [DataMember(Name = "lastEditDate")]
+        [DataMember(Name = "LastEditDate")]
         private DateTime _lastEditDate;
         #endregion
 

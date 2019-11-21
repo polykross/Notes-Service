@@ -7,19 +7,19 @@ namespace Notes.DTO
     public class ServiceCustomerDTO
     {
         #region Fields
-        [DataMember(Name = "guid")]
+        [DataMember(Name = "Guid")]
         private Guid _guid;
-        [DataMember(Name = "login")]
+        [DataMember(Name = "Login")]
         private string _login;
-        [DataMember(Name = "password")]
+        [DataMember(Name = "Password")]
         private string _password;
-        [DataMember(Name = "firstName")]
+        [DataMember(Name = "FirstName")]
         private string _firstName;
-        [DataMember(Name = "lastName")]
+        [DataMember(Name = "LastName")]
         private string _lastName;
-        [DataMember(Name = "email")]
+        [DataMember(Name = "Email")]
         private string _email;
-        [DataMember(Name = "lastLoginDate")]
+        [DataMember(Name = "LastLoginDate")]
         private DateTime _lastLoginDate;
         #endregion
 
