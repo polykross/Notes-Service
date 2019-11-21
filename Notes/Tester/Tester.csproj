@@ -62,6 +62,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,11 +72,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\NotesServiceIIS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\NotesServiceIIS\Notes.Tester.NotesServiceIIS.CustomerDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS.wsdl" />
+    <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -98,10 +118,35 @@
       <Project>{2085d6f9-fe86-4abd-b61e-9d611119be2c}</Project>
       <Name>DBProviders</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{7492c490-a9a6-4207-a555-84114aebe4f1}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntityFrameworkDBProvider\EntityFrameworkDBProvider.csproj">
       <Project>{23288084-96f7-467b-b952-d27620ad2a0b}</Project>
       <Name>EntityFrameworkDBProvider</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\NotesServiceIIS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NotesServiceIIS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NotesServiceIIS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NotesServiceIIS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ec98eb76-3a87-41e2-92f2-b3d5e6977c9f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:10053/NotesServiceIIS.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="NotesServiceIIS.wsdl" MetadataType="Wsdl" ID="1aab6195-1ea7-4b19-b1ef-cd77619a2e1d" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?wsdl" />
+    <MetadataFile FileName="NotesServiceIIS.xsd" MetadataType="Schema" ID="de480c54-3a80-448e-b461-3ed28b0bcda2" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd0" />
+    <MetadataFile FileName="NotesServiceIIS1.xsd" MetadataType="Schema" ID="6b10aed8-c3db-40bc-bff2-34bf2eccd121" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd1" />
+    <MetadataFile FileName="NotesServiceIIS2.xsd" MetadataType="Schema" ID="e93a0e0d-51fc-43bd-8de7-1aa833e225d4" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd2" />
+    <MetadataFile FileName="NotesServiceIIS.disco" MetadataType="Disco" ID="c0755852-9498-4798-8ab1-8be651cba310" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

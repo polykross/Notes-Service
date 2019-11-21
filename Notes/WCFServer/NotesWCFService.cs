@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Notes.Server.NotesServiceImplementation;
+using System;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.ServiceProcess;
-using Notes.Server.NotesServiceImplementation;
 
 namespace Notes.Server.WCFServer
 {

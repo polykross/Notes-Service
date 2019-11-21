@@ -23,6 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesWCFServerIIS", "NotesW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFServer", "WCFServer\WCFServer.csproj", "{4FDD07D7-3B96-44D1-A289-A8CA497B8A68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{1267A90D-C841-4DA2-BB28-EAAC48520B86}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BCC173D1-5CF6-4357-B243-8EFDEE70ADBA} = {BCC173D1-5CF6-4357-B243-8EFDEE70ADBA}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +74,10 @@ Global
 		{4FDD07D7-3B96-44D1-A289-A8CA497B8A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FDD07D7-3B96-44D1-A289-A8CA497B8A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FDD07D7-3B96-44D1-A289-A8CA497B8A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1267A90D-C841-4DA2-BB28-EAAC48520B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1267A90D-C841-4DA2-BB28-EAAC48520B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1267A90D-C841-4DA2-BB28-EAAC48520B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1267A90D-C841-4DA2-BB28-EAAC48520B86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
