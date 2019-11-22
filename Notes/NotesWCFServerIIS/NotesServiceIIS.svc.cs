@@ -1,7 +1,7 @@
-﻿using System;
-using Notes.DTO;
+﻿using Notes.DTO;
 using Notes.Server.NotesServiceImplementation;
 using Notes.Server.WCFServerInterface;
+using System;
 using System.Collections.Generic;
 
 namespace Notes.Server.WCFServerIIS
@@ -10,54 +10,39 @@ namespace Notes.Server.WCFServerIIS
     {
         private readonly INotesService _service = new NotesService();
 
-        public ServiceCustomerDTO CustomerRegistration(ClientCustomerDTO info)
+        public CustomerDTO Register(CustomerDTO customer)
         {
-            return _service.CustomerRegistration(info);
+            return _service.Register(customer);
         }
 
-        public ServiceCustomerDTO UpdateCustomer(Guid guid, ClientCustomerDTO customer)
+        public CustomerDTO Login(string login, string password)
         {
-            return _service.UpdateCustomer(guid, customer);
+            return _service.Login(login, password);
         }
 
-        public void DeleteCustomer(Guid guid)
+        public List<ShortNoteDTO> GetNotes(Guid customerGuid)
         {
-            _service.DeleteCustomer(guid);
+            return _service.GetNotes(customerGuid);
         }
 
-        public ServiceCustomerDTO Login(AuthorizationDTO authorizationInformation)
+        public NoteDTO GetNote(Guid guid)
         {
-            return _service.Login(authorizationInformation);
+            return _service.GetNote(guid);
         }
 
-        public IEnumerable<ShortNoteDTO> GetCustomersShortNotes(string login)
+        public NoteDTO AddNote(NoteDTO note, Guid customerGuid)
         {
-            throw new NotImplementedException();
+            return _service.AddNote(note, customerGuid);
         }
 
-        public NoteDTO AddNote(string login, string title, string text = "")
+        public NoteDTO UpdateNote(NoteDTO note)
         {
-            throw new NotImplementedException();
+            return _service.UpdateNote(note);
         }
 
-        public NoteDTO EditNote(Guid id, string title, string text)
+        public bool DeleteNote(Guid guid)
         {
-            throw new NotImplementedException();
-        }
-
-        public NoteDTO EditNoteTitle(Guid id, string title)
-        {
-            throw new NotImplementedException();
-        }
-
-        public NoteDTO EditNoteText(Guid id, string text)
-        {
-            throw new NotImplementedException();
-        }
-
-        public NoteDTO GetNote(Guid id)
-        {
-            throw new NotImplementedException();
+            return _service.DeleteNote(guid);
         }
     }
 }

@@ -9,63 +9,75 @@ namespace Notes.Server.WCFServerInterface
     public interface INotesService
     {
         /// <summary>
-        /// Registers customer with registration info
+        /// Register new customer in the system.
         /// </summary>
-        /// <returns>Customer's information</returns>
-        /// <returns>NULL, if failure occured</returns>
+        /// <param name="customer">Information about customer. Guid and LastLoginDate can be empty.</param>
+        /// <returns>
+        /// Filled customer DTO if registration was successful, otherwise null.
+        /// </returns>
         [OperationContract]
-        ServiceCustomerDTO CustomerRegistration(ClientCustomerDTO info);
+        CustomerDTO Register(CustomerDTO customer);
 
         /// <summary>
-        /// Updates customer with client info
+        /// Get information about customer if login and password are correct.
         /// </summary>
-        /// <returns>Customer's information</returns>
-        /// <returns>NULL, if customer does not exist or other failure occured</returns>
+        /// <param name="login">Customer's login.</param>
+        /// <param name="password">Customer's encrypted password.</param>
+        /// <returns>
+        /// Customer DTO if login was successful, otherwise null.
+        /// </returns>
         [OperationContract]
-        ServiceCustomerDTO UpdateCustomer(Guid guid, ClientCustomerDTO customer);
-
-        /// <exception>When customer does not exist or other failure occured</exception>
-        [OperationContract]
-        void DeleteCustomer(Guid guid);
+        CustomerDTO Login(string login, string password);
 
         /// <summary>
-        /// Authorizes customer with authorization info.
+        /// Get a list of Notes (with only Guid and Title) for customer with specified Guid.
         /// </summary>
-        /// <returns>Customer's information</returns>
-        /// <returns>NULL, if authorization is incorrect</returns>
+        /// <param name="customerGuid">Customer's guid.</param>
+        /// <returns>
+        /// A list of notes.
+        /// </returns>
         [OperationContract]
-        ServiceCustomerDTO Login(AuthorizationDTO authorizationInformation);
-
-        /// <exception>When customer does not exist or other failure occured</exception>
-        [OperationContract]
-        IEnumerable<ShortNoteDTO> GetCustomersShortNotes(string login);
-
-        /// <returns>Note information including first creation and last edit date</returns>
-        /// <exception>When customer does not exist or other failure occured</exception>
-        [OperationContract]
-        NoteDTO AddNote(string login, string title, string text = "");
+        List<ShortNoteDTO> GetNotes(Guid customerGuid);
 
         /// <summary>
-        /// Edit note's text and title.
+        /// Get a Note with specified Guid.
         /// </summary>
-        /// <returns>Note information including first creation and last edit date</returns>
-        /// <exception>When note does not exist</exception>
+        /// <param name="guid">Note's guid.</param>
+        /// <returns>
+        /// A note with specified Guid.
+        /// </returns>
         [OperationContract]
-        NoteDTO EditNote(Guid id, string title, string text);
+        NoteDTO GetNote(Guid guid);
 
-        /// <returns>Note information including first creation and last edit date</returns>
-        /// <exception>When note does not exist</exception>
+        /// <summary>
+        /// Add a note for customer with specified Guid.
+        /// </summary>
+        /// <param name="note">A note with empty Guid, CreationDate and LastEditDate.</param>
+        /// <param name="customerGuid">A Guid of customer to add note to.</param>
+        /// <returns>
+        /// A note with all fields filled.
+        /// </returns>
         [OperationContract]
-        NoteDTO EditNoteTitle(Guid id, string title);
+        NoteDTO AddNote(NoteDTO note, Guid customerGuid);
 
-        /// <returns>Note information including first creation and last edit date</returns>
-        /// <exception>When note does not exist</exception>
+        /// <summary>
+        /// Update a note.
+        /// </summary>
+        /// <param name="note">Updated note (Guid, CreationDate and LastEditDate are not changed).</param>
+        /// <returns>
+        /// Updated note.
+        /// </returns>
         [OperationContract]
-        NoteDTO EditNoteText(Guid id, string text);
+        NoteDTO UpdateNote(NoteDTO note);
 
-        /// <returns>Note information including first creation and last edit date</returns>
-        /// <exception>When note does not exist</exception>
+        /// <summary>
+        /// Delete a note.
+        /// </summary>
+        /// <param name="guid">A Guid of note to delete.</param>
+        /// <returns>
+        /// true iff delete successful.
+        /// </returns>
         [OperationContract]
-        NoteDTO GetNote(Guid id);
+        bool DeleteNote(Guid guid);
     }
 }

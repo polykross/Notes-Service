@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Notes.DTO
 {
     [DataContract]
-    public class ServiceCustomerDTO
+    public class CustomerDTO
     {
         #region Fields
         [DataMember(Name = "Guid")]
@@ -70,13 +74,8 @@ namespace Notes.DTO
         #endregion
 
         #region Constructor
-        public ServiceCustomerDTO()
+        public CustomerDTO(string login, string password, string firstName, string lastName, string email)
         {
-        }
-
-        public ServiceCustomerDTO(Guid guid, string login, string password, string firstName, string lastName, string email)
-        {
-            _guid = guid;
             _login = login;
             _password = password;
             _firstName = firstName;
@@ -84,7 +83,7 @@ namespace Notes.DTO
             _email = email;
         }
 
-        public ServiceCustomerDTO(Guid guid, string login, string password, string firstName, string lastName, string email, DateTime lastLoginDate)
+        public CustomerDTO(Guid guid, string login, string password, string firstName, string lastName, string email, DateTime lastLoginDate)
         {
             _guid = guid;
             _login = login;

@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Notes.DBModels;
 using Notes.DBProviders;
+using Notes.DTO;
 using Notes.EntityFrameworkDBProvider;
 using Notes.IntegrationTests.NotesServiceIIS;
 
@@ -58,19 +59,19 @@ namespace Notes.IntegrationTests
         private AuthorizationDTO BuildAuthorizationDTO(ServiceCustomerDTO customer)
         {
             var authorization = new AuthorizationDTO();
-            authorization.login = customer.login;
-            authorization.password = customer.password;
+            authorization.Login = customer.Login;
+            authorization.Password = customer.Password;
             return authorization;
         }
 
-        private ClientCustomerDTO BuildClientCustomerDTO()
+        private CustomerDTO BuildClientCustomerDTO()
         {
-            var customer = new ClientCustomerDTO();
-            customer.login = $"Login{_freeId}";
-            customer.password = $"Password{_freeId}";
-            customer.firstName = $"FirstName{_freeId}";
-            customer.lastName = $"LastName{_freeId}";
-            customer.email = $"Email{_freeId}";
+            var customer = new CustomerDTO();
+            customer.Login = $"Login{_freeId}";
+            customer.Password = $"Password{_freeId}";
+            customer.FirstName = $"FirstName{_freeId}";
+            customer.LastName = $"LastName{_freeId}";
+            customer.Email = $"Email{_freeId}";
             _freeId++;
             return customer;
         }

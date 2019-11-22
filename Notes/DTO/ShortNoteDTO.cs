@@ -28,10 +28,6 @@ namespace Notes.DTO
         #endregion
 
         #region Constructor
-        public ShortNoteDTO()
-        {
-        }
-
         public ShortNoteDTO(Guid guid, string title)
         {
             _guid = guid;

@@ -76,6 +76,17 @@ namespace Notes.DBModels
         #endregion
 
         #region Constructor
+        public Customer(Guid guid, string firstName, string lastName, string login, string email, string password, DateTime lastLoginDate)
+        {
+            _guid = guid;
+            _firstName = firstName;
+            _lastName = lastName;
+            _login = login;
+            _email = email;
+            _password = password;
+            _lastLoginDate = lastLoginDate;
+        }
+
         public Customer(Guid guid, string firstName, string lastName, string login, string email, string password) : this()
         {
             _guid = guid;

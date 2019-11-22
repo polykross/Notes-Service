@@ -12,85 +12,100 @@ namespace Notes.Server.NotesServiceImplementation
     public class NotesService : INotesService
     {
         private readonly IDBProvider _provider = new DBProviderDisconnected();
-        
-        public ServiceCustomerDTO CustomerRegistration(ClientCustomerDTO info)
+
+        public CustomerDTO Register(CustomerDTO customer)
         {
-            var isUnique = _provider.SelectAll<Customer>().All(c => !c.Login.Equals(info.Login));
+            var isUnique = _provider.SelectAll<Customer>().All(c => !c.Login.Equals(customer.Login));
             if (!isUnique)
             {
                 return null;
             }
-            var customer = CustomerFromClientDTO(info);
-            _provider.Add(customer);
-            return ServiceCustomerFromClientDTO(customer.Guid, info);
+            var newCustomer = CustomerFromDTO(customer);
+            _provider.Add(newCustomer);
+            return CustomerToDTO(newCustomer);
         }
 
-        public ServiceCustomerDTO UpdateCustomer(Guid guid, ClientCustomerDTO customer)
+        public CustomerDTO Login(string login, string password)
         {
-            _provider.Update(CustomerFromIdAndClientDTO(guid, customer));
-            return ServiceCustomerFromClientDTO(guid, customer);
+            var customer = FindByLogin(login);
+            return customer?.CheckPassword(password) == true ? GetLoggedInCustomerDTO(customer) : null;
         }
 
-        public void DeleteCustomer(Guid guid)
-        {
-            _provider.DeleteById<Customer>(guid);
-        }
-
-        public ServiceCustomerDTO Login(AuthorizationDTO authorizationInformation)
-        {
-            var customer = _provider.SelectAll<Customer>().First(c => c.Login.Equals(authorizationInformation.Login));
-            return customer.CheckPassword(authorizationInformation.Password) ? GetLoggedInCustomer(customer) : null;
-        }
-
-        public IEnumerable<ShortNoteDTO> GetCustomersShortNotes(string login)
+        public List<ShortNoteDTO> GetNotes(Guid customerGuid)
         {
             throw new NotImplementedException();
         }
 
-        public NoteDTO AddNote(string login, string title, string text = "")
+        public NoteDTO GetNote(Guid guid)
         {
             throw new NotImplementedException();
         }
 
-        public NoteDTO EditNote(Guid id, string title, string text)
+        public NoteDTO AddNote(NoteDTO note, Guid customerGuid)
         {
             throw new NotImplementedException();
         }
 
-        public NoteDTO EditNoteTitle(Guid id, string title)
+        public NoteDTO UpdateNote(NoteDTO note)
         {
             throw new NotImplementedException();
         }
 
-        public NoteDTO EditNoteText(Guid id, string text)
-        {
-            throw new NotImplementedException();
-        }
-
-        public NoteDTO GetNote(Guid id)
+        public bool DeleteNote(Guid guid)
         {
             throw new NotImplementedException();
         }
 
         #region UtilFunctions
-        private static Customer CustomerFromClientDTO(ClientCustomerDTO dto)
+        private Customer FindByLogin(string login)
         {
-            return new Customer(firstName: dto.FirstName, lastName: dto.LastName, login: dto.Login, email: dto.Email, password: dto.Password);
+            return _provider.SelectAll<Customer>().First(c => c.Login.Equals(login)); ;
         }
 
-        private static ServiceCustomerDTO ServiceCustomerFromClientDTO(Guid guid, ClientCustomerDTO dto)
+        private Customer FindByGuid(Guid guid)
         {
-            return new ServiceCustomerDTO(guid: guid, login: dto.Login, password: dto.Password, firstName: dto.FirstName, lastName: dto.LastName, email: dto.Email);
+            return _provider.SelectAll<Customer>().First(c => c.Guid.Equals(guid)); ;
+        }
+        #endregion
+
+        #region StaticUtilFunctions
+        private static Customer CustomerFromDTO(CustomerDTO dto)
+        {
+            return new Customer(
+                guid: dto.Guid,
+                firstName: dto.FirstName,
+                lastName: dto.LastName,
+                login: dto.Login,
+                email: dto.Email,
+                password: dto.Password,
+                lastLoginDate: dto.LastLoginDate
+            );
         }
 
-        private static Customer CustomerFromIdAndClientDTO(Guid guid, ClientCustomerDTO dto)
+        private static CustomerDTO CustomerToDTO(Customer c)
         {
-            return new Customer(guid: guid, login: dto.Login, password: dto.Password, firstName: dto.FirstName, lastName: dto.LastName, email: dto.Email);
+            return new CustomerDTO(
+                guid: c.Guid,
+                firstName: c.FirstName, 
+                lastName: c.LastName, 
+                login: c.Login, 
+                email: c.Email, 
+                password: c.Password,
+                lastLoginDate: c.LastLoginDate
+                );
         }
 
-        private static ServiceCustomerDTO GetLoggedInCustomer(Customer customer)
+        private static CustomerDTO GetLoggedInCustomerDTO(Customer customer)
         {
-            return new ServiceCustomerDTO(guid: customer.Guid, login: customer.Login, password: customer.Password, firstName: customer.FirstName, lastName: customer.LastName, email: customer.Email, lastLoginDate: DateTime.UtcNow);
+            return new CustomerDTO(
+                guid: customer.Guid, 
+                login: customer.Login, 
+                password: customer.Password, 
+                firstName: customer.FirstName, 
+                lastName: customer.LastName, 
+                email: customer.Email, 
+                lastLoginDate: DateTime.UtcNow
+                );
         }
         #endregion
     }
