@@ -14,8 +14,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "EntityF
 		{BCC173D1-5CF6-4357-B243-8EFDEE70ADBA} = {BCC173D1-5CF6-4357-B243-8EFDEE70ADBA}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationContract", "DTO\CommunicationContract.csproj", "{7492C490-A9A6-4207-A555-84114AEBE4F1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFServerInterface", "WCFServerInterface\WCFServerInterface.csproj", "{63BFB7E2-DCEA-4EDB-8910-D763A28819DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesServiceImplementation", "NotesServiceImplementation\NotesServiceImplementation.csproj", "{3960A5BD-B416-4F6F-8B77-69DD4C68FBD8}"
@@ -23,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesWCFServerIIS", "NotesWCFServerIIS\NotesWCFServerIIS.csproj", "{BCC173D1-5CF6-4357-B243-8EFDEE70ADBA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFServer", "WCFServer\WCFServer.csproj", "{4FDD07D7-3B96-44D1-A289-A8CA497B8A68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationContract", "CommunicationContract\CommunicationContract.csproj", "{7492C490-A9A6-4207-A555-84114AEBE4F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,10 +46,6 @@ Global
 		{5F6A6BED-CBD0-4A5E-8238-BFF7152AECC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F6A6BED-CBD0-4A5E-8238-BFF7152AECC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F6A6BED-CBD0-4A5E-8238-BFF7152AECC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{63BFB7E2-DCEA-4EDB-8910-D763A28819DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{63BFB7E2-DCEA-4EDB-8910-D763A28819DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63BFB7E2-DCEA-4EDB-8910-D763A28819DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,6 +62,10 @@ Global
 		{4FDD07D7-3B96-44D1-A289-A8CA497B8A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FDD07D7-3B96-44D1-A289-A8CA497B8A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FDD07D7-3B96-44D1-A289-A8CA497B8A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7492C490-A9A6-4207-A555-84114AEBE4F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

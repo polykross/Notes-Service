@@ -1,8 +1,8 @@
-﻿using Notes.DTO;
-using Notes.Server.NotesServiceImplementation;
+﻿using Notes.Server.NotesServiceImplementation;
 using Notes.Server.WCFServerInterface;
 using System;
 using System.Collections.Generic;
+using Notes.CommunicationContract;
 
 namespace Notes.Server.WCFServerIIS
 {

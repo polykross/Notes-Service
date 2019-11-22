@@ -7,8 +7,8 @@
     <ProjectGuid>{7492C490-A9A6-4207-A555-84114AEBE4F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Notes.DTO</RootNamespace>
-    <AssemblyName>Notes.DTO</AssemblyName>
+    <RootNamespace>Notes.CommunicationContract</RootNamespace>
+    <AssemblyName>Notes.CommunicationContract</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

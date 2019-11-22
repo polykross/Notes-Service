@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Notes.DTO
+namespace Notes.CommunicationContract
 {
     [DataContract]
     public class ShortNoteDTO

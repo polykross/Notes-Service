@@ -47,11 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DTO\CommunicationContract.csproj">
+    <ProjectReference Include="..\CommunicationContract\CommunicationContract.csproj">
       <Project>{7492c490-a9a6-4207-a555-84114aebe4f1}</Project>
       <Name>CommunicationContract</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,11 +1,11 @@
 ﻿using Notes.DBModels;
 using Notes.DBProviders;
-using Notes.DTO;
 using Notes.EntityFrameworkDBProvider;
 using Notes.Server.WCFServerInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Notes.CommunicationContract;
 
 namespace Notes.Server.NotesServiceImplementation
 {
@@ -20,15 +20,29 @@ namespace Notes.Server.NotesServiceImplementation
             {
                 return null;
             }
-            var newCustomer = CustomerFromDTO(customer);
-            _provider.Add(newCustomer);
+            var newCustomer = CreateNewCustomerFromDTO(customer);
+            try
+            {
+                _provider.Add(newCustomer);
+            }
+            catch
+            {
+                return null;
+            }
             return CustomerToDTO(newCustomer);
         }
 
         public CustomerDTO Login(string login, string password)
         {
-            var customer = FindByLogin(login);
-            return customer?.CheckPassword(password) == true ? GetLoggedInCustomerDTO(customer) : null;
+            try
+            {
+                Customer customer = FindByLogin(login);
+                return customer?.CheckPassword(password) == true ? GetLoggedInCustomerDTO(customer) : null;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public List<ShortNoteDTO> GetNotes(Guid customerGuid)
@@ -69,16 +83,14 @@ namespace Notes.Server.NotesServiceImplementation
         #endregion
 
         #region StaticUtilFunctions
-        private static Customer CustomerFromDTO(CustomerDTO dto)
+        private static Customer CreateNewCustomerFromDTO(CustomerDTO dto)
         {
             return new Customer(
-                guid: dto.Guid,
                 firstName: dto.FirstName,
                 lastName: dto.LastName,
                 login: dto.Login,
                 email: dto.Email,
-                password: dto.Password,
-                lastLoginDate: dto.LastLoginDate
+                password: dto.Password
             );
         }
 
