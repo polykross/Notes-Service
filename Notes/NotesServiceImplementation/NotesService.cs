@@ -2,11 +2,11 @@
 using Notes.CommunicationContract;
 using Notes.DBModels;
 using Notes.EntityFrameworkDBProvider;
+using Notes.Logger;
 using Notes.Server.WCFServerInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Notes.Logger;
 
 namespace Notes.Server.NotesServiceImplementation
 {

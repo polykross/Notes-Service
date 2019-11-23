@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Notes.CommunicationContract;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
-using Notes.CommunicationContract;
 
 namespace Notes.Server.WCFServerInterface
 {

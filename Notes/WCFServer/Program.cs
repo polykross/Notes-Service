@@ -10,7 +10,6 @@ namespace Notes.Server.WCFServer
     {
         static void Main(string[] args)
         {
-            //Thread.Sleep(10000);
             bool isInstalled = false;
             bool serviceStarting = false;
             const string serviceName = NotesWCFService.CurrentServiceName;

@@ -1,8 +1,7 @@
 namespace Notes.EntityFrameworkDBProvider.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class NotesMigration : DbMigration
     {
         public override void Up()

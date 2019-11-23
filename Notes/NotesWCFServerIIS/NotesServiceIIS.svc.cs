@@ -1,9 +1,9 @@
 ﻿using Notes.CommunicationContract;
+using Notes.Logger;
 using Notes.Server.NotesServiceImplementation;
 using Notes.Server.WCFServerInterface;
 using System;
 using System.Collections.Generic;
-using Notes.Logger;
 
 namespace Notes.Server.WCFServerIIS
 {

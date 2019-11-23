@@ -1,7 +1,7 @@
-﻿using Notes.DBProviders;
-using System;
-using log4net;
+﻿using log4net;
+using Notes.DBProviders;
 using Notes.Logger;
+using System;
 
 namespace Notes.EntityFrameworkDBProvider
 {
