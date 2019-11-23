@@ -40,21 +40,6 @@ namespace Notes.EntityFrameworkDBProvider
             }
         }
 
-        public static bool TryFunctionWithProvider<T>(Func<IDBProvider, bool> function)
-        {
-            try
-            {
-                using (var provider = GetProvider())
-                {
-                    return function.Invoke(provider);
-                }
-            }
-            catch
-            {
-                return default;
-            }
-        }
-
         private static IDBProvider GetProvider()
         {
             return new DBProvider();

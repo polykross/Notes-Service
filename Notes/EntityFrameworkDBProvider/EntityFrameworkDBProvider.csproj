@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContextUtil.cs" />
     <Compile Include="DBProvider.cs" />
     <Compile Include="DBProviderUtil.cs" />
     <Compile Include="Migrations\201911190836312_NotesMigration.cs" />

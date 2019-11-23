@@ -1,11 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Notes.DBModels;
-using Notes.DBProviders;
 using Notes.EntityFrameworkDBProvider;
 using Notes.IntegrationTests.NotesServiceImpl;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 namespace Notes.IntegrationTests
@@ -14,7 +12,7 @@ namespace Notes.IntegrationTests
     public class NotesServiceTests
     {
         private int _freeId;
-        private NotesServiceClient _client = null;
+        private NotesServiceClient _client;
 
         [TestInitialize]
         [TestCleanup]

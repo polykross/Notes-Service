@@ -1,7 +1,7 @@
 ﻿using Notes.DBModels;
+using Notes.EntityFrameworkDBProvider.Migrations;
 using Notes.EntityFrameworkDBProvider.ModelConfiguration;
 using System.Data.Entity;
-using Notes.EntityFrameworkDBProvider.Migrations;
 
 namespace Notes.EntityFrameworkDBProvider
 {
