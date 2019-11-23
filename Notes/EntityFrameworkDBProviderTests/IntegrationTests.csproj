@@ -74,6 +74,7 @@
     <Compile Include="NotesDBContextTests.cs" />
     <Compile Include="NotesServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceTestUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

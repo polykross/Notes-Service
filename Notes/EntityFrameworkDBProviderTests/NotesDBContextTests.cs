@@ -10,17 +10,22 @@ namespace Notes.IntegrationTests
         private DBContextTestUtil _util;
 
         [TestInitialize]
-        [TestCleanup]
-        public void ClearDatabase()
+        public void Init()
         {
             _util = new DBContextTestUtil();
+            _util.DeleteAllCustomers();
+        }
+
+        [TestCleanup]
+        public void CleanDatabase()
+        {
             _util.DeleteAllCustomers();
         }
 
         [TestMethod]
         public void CustomersAdditionTest()
         {
-            int customersAmount = 3;
+            const int customersAmount = 3;
             _util.AddCustomers(customersAmount);
             var customers = _util.GetAllCustomers();
             Assert.IsTrue(customers.All(c => c != null) && customers.Count() == customersAmount);
@@ -37,7 +42,7 @@ namespace Notes.IntegrationTests
         [TestMethod]
         public void CustomersFetchingTest()
         {
-            int customersAmount = 10;
+            const int customersAmount = 10;
             _util.AddCustomers(customersAmount);
             Assert.AreEqual(_util.GetAllCustomers().Count, customersAmount);
         }
@@ -45,10 +50,10 @@ namespace Notes.IntegrationTests
         [TestMethod]
         public void CustomerEditingTest()
         {
-            Customer addedCustomer = _util.AddCustomer();
+            var addedCustomer = _util.AddCustomer();
             addedCustomer.Password = "MyNonExistingPassword";
             _util.EditCustomer(addedCustomer);
-            Customer editedCustomer = _util.GetCustomerById(addedCustomer.Guid);
+            var editedCustomer = _util.GetCustomerById(addedCustomer.Guid);
             Assert.AreEqual(addedCustomer.Password, editedCustomer.Password);
         }
     }

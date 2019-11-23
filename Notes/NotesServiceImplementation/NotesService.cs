@@ -31,7 +31,7 @@ namespace Notes.Server.NotesServiceImplementation
         {
             return DBProviderUtil.TryFunctionWithProvider(p =>
             {
-                Customer customer = p.Select<Customer>(c => c.Login == login);
+                var customer = p.Select<Customer>(c => c.Login == login);
                 return customer?.CheckPassword(password) == true ? GetLoggedInCustomerDTO(customer) : null;
             });
         }
