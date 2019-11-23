@@ -2,6 +2,8 @@
 using System;
 using System.ServiceModel;
 using System.ServiceProcess;
+using log4net;
+using log4net.Config;
 
 namespace Notes.Server.WCFServer
 {
