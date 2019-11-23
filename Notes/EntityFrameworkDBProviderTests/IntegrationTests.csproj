@@ -65,7 +65,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Connected Services\NotesServiceIIS\Reference.cs">
+    <Compile Include="Connected Services\NotesServiceImpl\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -76,23 +76,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\NotesServiceIIS\Notes.IntegrationTests.NotesServiceIIS.CustomerDTO.datasource">
+    <None Include="Connected Services\NotesServiceImpl\Notes.IntegrationTests.NotesServiceImpl.CustomerDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\NotesServiceIIS\Notes.IntegrationTests.NotesServiceIIS.NoteDTO.datasource">
+    <None Include="Connected Services\NotesServiceImpl\Notes.IntegrationTests.NotesServiceImpl.NoteDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\NotesServiceIIS\Notes.IntegrationTests.NotesServiceIIS.ShortNoteDTO.datasource">
+    <None Include="Connected Services\NotesServiceImpl\Notes.IntegrationTests.NotesServiceImpl.ShortNoteDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS.wsdl" />
-    <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS.xsd">
+    <None Include="Connected Services\NotesServiceImpl\NotesServiceIIS.wsdl" />
+    <None Include="Connected Services\NotesServiceImpl\NotesServiceIIS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS1.xsd">
+    <None Include="Connected Services\NotesServiceImpl\NotesServiceIIS1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS2.xsd">
+    <None Include="Connected Services\NotesServiceImpl\NotesServiceIIS2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -114,28 +114,24 @@
       <Project>{3960a5bd-b416-4f6f-8b77-69dd4c68fbd8}</Project>
       <Name>NotesServiceImplementation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NotesWCFServerIIS\NotesWCFServerIIS.csproj">
-      <Project>{bcc173d1-5cf6-4357-b243-8efdee70adba}</Project>
-      <Name>NotesWCFServerIIS</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\NotesServiceIIS\" />
+    <WCFMetadataStorage Include="Connected Services\NotesServiceImpl\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\NotesServiceIIS\NotesServiceIIS.disco" />
+    <None Include="Connected Services\NotesServiceImpl\NotesServiceIIS.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\NotesServiceIIS\configuration91.svcinfo" />
+    <None Include="Connected Services\NotesServiceImpl\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\NotesServiceIIS\configuration.svcinfo" />
+    <None Include="Connected Services\NotesServiceImpl\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\NotesServiceIIS\Reference.svcmap">
+    <None Include="Connected Services\NotesServiceImpl\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -1,9 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Notes.DBModels;
 using Notes.DBProviders;
 using Notes.EntityFrameworkDBProvider;
-using Notes.IntegrationTests.NotesServiceIIS;
+using Notes.IntegrationTests.NotesServiceImpl;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace Notes.IntegrationTests
@@ -20,7 +22,7 @@ namespace Notes.IntegrationTests
         {
             if (_client == null)
             {
-                _client = new NotesServiceIIS.NotesServiceClient("BasicHttpBinding_INotesService");
+                _client = new NotesServiceImpl.NotesServiceClient("BasicHttpBinding_INotesService");
             }
             else
             {
@@ -137,13 +139,96 @@ namespace Notes.IntegrationTests
             }
         }
 
-        // TODO: Add UpdateNote test
+        [TestMethod]
+        public void UpdateNoteTest()
+        {
+            // Initialize notes
+            var customer = GetAuthorizedCustomerDTO();
+            var notesToAdd = new List<NoteDTO>
+            {
+                BuildDefaultNoteDTO(),
+                BuildDefaultNoteDTO(),
+                BuildDefaultNoteDTO()
+            };
+            var addedNotes = notesToAdd.Select(note => _client.AddNote(note, customer.Guid)).ToList();
 
-        // TODO: Add DeleteNote test
+            // Update notes
+            const string customTextAndTitle = "myCustomTextAndTitle";
+            foreach (var aNote in addedNotes)
+            {
+                aNote.Title = customTextAndTitle;
+                aNote.Text = customTextAndTitle;
+                _client.UpdateNote(aNote);
+            }
+
+            // Check notes
+            var customersNotes = GetCustomersNotes(customer).ToList();
+            var hasEditedNoteResults = addedNotes.Select(aNote =>
+                customersNotes.Any(n => 
+                    n.Title.Equals(aNote.Title) && n.Text.Equals(aNote.Text)
+                )
+            );
+
+            foreach (var hasEditedNote in hasEditedNoteResults)
+            {
+                Assert.IsTrue(hasEditedNote);
+            }
+
+            var hasNoOtherNotes = customersNotes.Count.Equals(addedNotes.Count);
+            Assert.IsTrue(hasNoOtherNotes);
+        }
+
+        [TestMethod]
+        public void UpdateNoteFailureTest()
+        {
+            var customer = GetAuthorizedCustomerDTO();
+            var addedNotes = GetAddedNotes(customer);
+            
+            DeleteNotes(addedNotes);
+            var removedNotes = addedNotes;
+
+            foreach (var rNote in removedNotes)
+            {
+                rNote.Title = "anything";
+                rNote.Text = "anything";
+                Assert.IsNull(_client.UpdateNote(rNote));
+            }
+        }
+
+        [TestMethod]
+        public void DeleteNoteTest()
+        {
+            var customer = GetAuthorizedCustomerDTO();
+            var addedNotes = GetAddedNotes(customer);
+            
+            DeleteNotes(addedNotes);
+
+            var customersNotes = GetCustomersNotes(customer).ToList();
+            Assert.IsTrue(customersNotes.Count == 0);
+        }
+
+        [TestMethod]
+        public void DeleteNoteFailureTest()
+        {
+            Assert.IsFalse(_client.DeleteNote(Guid.Empty));
+        }
 
         #region Utils
 
-        private IEnumerable<NoteDTO> GetRemovedNotes(CustomerDTO customer)
+        private void DeleteNotes(IEnumerable<NoteDTO> notes)
+        {
+            foreach (var note in notes)
+            {
+                _client.DeleteNote(note.Guid);
+            }
+        }
+
+        private List<NoteDTO> GetCustomersNotes(CustomerDTO customer)
+        {
+            return _client.GetNotes(customerGuid: customer.Guid).Select(sn => _client.GetNote(sn.Guid)).ToList();
+        }
+
+        private List<NoteDTO> GetRemovedNotes(CustomerDTO customer)
         {
             var addedNotes = GetAddedNotes(customer).ToList();
             foreach (var addedNote in addedNotes)
@@ -153,7 +238,7 @@ namespace Notes.IntegrationTests
             return addedNotes;
         }
 
-        private IEnumerable<NoteDTO> GetAddedNotes(CustomerDTO customer)
+        private List<NoteDTO> GetAddedNotes(CustomerDTO customer)
         {
             var notesToAdd = new List<NoteDTO> { BuildNoteDTO(), BuildNoteDTO(), BuildNoteDTO() };
             return notesToAdd.Select(note => _client.AddNote(note, customer.Guid)).ToList();
@@ -181,10 +266,20 @@ namespace Notes.IntegrationTests
 
         private NoteDTO BuildNoteDTO()
         {
+            return BuildNoteDTO(title: $"Title{_freeId}", text: $"Text{_freeId}");
+        }
+
+        private NoteDTO BuildDefaultNoteDTO()
+        {
+            return BuildNoteDTO(title: $"Default", text: $"Default");
+        }
+
+        private NoteDTO BuildNoteDTO(string title, string text)
+        {
             return new NoteDTO
             {
-                Text = $"Login{_freeId}",
-                Title = $"Password{_freeId}"
+                Text = title,
+                Title = text
             };
         }
 

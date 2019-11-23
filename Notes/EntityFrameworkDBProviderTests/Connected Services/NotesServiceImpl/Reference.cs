@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Notes.IntegrationTests.NotesServiceIIS {
+namespace Notes.IntegrationTests.NotesServiceImpl {
     using System.Runtime.Serialization;
     using System;
     
@@ -325,44 +325,44 @@ namespace Notes.IntegrationTests.NotesServiceIIS {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="NotesServiceIIS.INotesService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="NotesServiceImpl.INotesService")]
     public interface INotesService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/Register", ReplyAction="http://tempuri.org/INotesService/RegisterResponse")]
-        Notes.IntegrationTests.NotesServiceIIS.CustomerDTO Register(Notes.IntegrationTests.NotesServiceIIS.CustomerDTO customer);
+        Notes.IntegrationTests.NotesServiceImpl.CustomerDTO Register(Notes.IntegrationTests.NotesServiceImpl.CustomerDTO customer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/Register", ReplyAction="http://tempuri.org/INotesService/RegisterResponse")]
-        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.CustomerDTO> RegisterAsync(Notes.IntegrationTests.NotesServiceIIS.CustomerDTO customer);
+        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.CustomerDTO> RegisterAsync(Notes.IntegrationTests.NotesServiceImpl.CustomerDTO customer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/Login", ReplyAction="http://tempuri.org/INotesService/LoginResponse")]
-        Notes.IntegrationTests.NotesServiceIIS.CustomerDTO Login([System.ServiceModel.MessageParameterAttribute(Name="login")] string login1, string password);
+        Notes.IntegrationTests.NotesServiceImpl.CustomerDTO Login([System.ServiceModel.MessageParameterAttribute(Name="login")] string login1, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/Login", ReplyAction="http://tempuri.org/INotesService/LoginResponse")]
-        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.CustomerDTO> LoginAsync(string login, string password);
+        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.CustomerDTO> LoginAsync(string login, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/GetNotes", ReplyAction="http://tempuri.org/INotesService/GetNotesResponse")]
-        Notes.IntegrationTests.NotesServiceIIS.ShortNoteDTO[] GetNotes(System.Guid customerGuid);
+        Notes.IntegrationTests.NotesServiceImpl.ShortNoteDTO[] GetNotes(System.Guid customerGuid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/GetNotes", ReplyAction="http://tempuri.org/INotesService/GetNotesResponse")]
-        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.ShortNoteDTO[]> GetNotesAsync(System.Guid customerGuid);
+        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.ShortNoteDTO[]> GetNotesAsync(System.Guid customerGuid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/GetNote", ReplyAction="http://tempuri.org/INotesService/GetNoteResponse")]
-        Notes.IntegrationTests.NotesServiceIIS.NoteDTO GetNote(System.Guid guid);
+        Notes.IntegrationTests.NotesServiceImpl.NoteDTO GetNote(System.Guid guid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/GetNote", ReplyAction="http://tempuri.org/INotesService/GetNoteResponse")]
-        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.NoteDTO> GetNoteAsync(System.Guid guid);
+        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.NoteDTO> GetNoteAsync(System.Guid guid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/AddNote", ReplyAction="http://tempuri.org/INotesService/AddNoteResponse")]
-        Notes.IntegrationTests.NotesServiceIIS.NoteDTO AddNote(Notes.IntegrationTests.NotesServiceIIS.NoteDTO note, System.Guid customerGuid);
+        Notes.IntegrationTests.NotesServiceImpl.NoteDTO AddNote(Notes.IntegrationTests.NotesServiceImpl.NoteDTO note, System.Guid customerGuid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/AddNote", ReplyAction="http://tempuri.org/INotesService/AddNoteResponse")]
-        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.NoteDTO> AddNoteAsync(Notes.IntegrationTests.NotesServiceIIS.NoteDTO note, System.Guid customerGuid);
+        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.NoteDTO> AddNoteAsync(Notes.IntegrationTests.NotesServiceImpl.NoteDTO note, System.Guid customerGuid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/UpdateNote", ReplyAction="http://tempuri.org/INotesService/UpdateNoteResponse")]
-        Notes.IntegrationTests.NotesServiceIIS.NoteDTO UpdateNote(Notes.IntegrationTests.NotesServiceIIS.NoteDTO note);
+        Notes.IntegrationTests.NotesServiceImpl.NoteDTO UpdateNote(Notes.IntegrationTests.NotesServiceImpl.NoteDTO note);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/UpdateNote", ReplyAction="http://tempuri.org/INotesService/UpdateNoteResponse")]
-        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.NoteDTO> UpdateNoteAsync(Notes.IntegrationTests.NotesServiceIIS.NoteDTO note);
+        System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.NoteDTO> UpdateNoteAsync(Notes.IntegrationTests.NotesServiceImpl.NoteDTO note);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/DeleteNote", ReplyAction="http://tempuri.org/INotesService/DeleteNoteResponse")]
         bool DeleteNote(System.Guid guid);
@@ -372,12 +372,12 @@ namespace Notes.IntegrationTests.NotesServiceIIS {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface INotesServiceChannel : Notes.IntegrationTests.NotesServiceIIS.INotesService, System.ServiceModel.IClientChannel {
+    public interface INotesServiceChannel : Notes.IntegrationTests.NotesServiceImpl.INotesService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class NotesServiceClient : System.ServiceModel.ClientBase<Notes.IntegrationTests.NotesServiceIIS.INotesService>, Notes.IntegrationTests.NotesServiceIIS.INotesService {
+    public partial class NotesServiceClient : System.ServiceModel.ClientBase<Notes.IntegrationTests.NotesServiceImpl.INotesService>, Notes.IntegrationTests.NotesServiceImpl.INotesService {
         
         public NotesServiceClient() {
         }
@@ -398,51 +398,51 @@ namespace Notes.IntegrationTests.NotesServiceIIS {
                 base(binding, remoteAddress) {
         }
         
-        public Notes.IntegrationTests.NotesServiceIIS.CustomerDTO Register(Notes.IntegrationTests.NotesServiceIIS.CustomerDTO customer) {
+        public Notes.IntegrationTests.NotesServiceImpl.CustomerDTO Register(Notes.IntegrationTests.NotesServiceImpl.CustomerDTO customer) {
             return base.Channel.Register(customer);
         }
         
-        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.CustomerDTO> RegisterAsync(Notes.IntegrationTests.NotesServiceIIS.CustomerDTO customer) {
+        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.CustomerDTO> RegisterAsync(Notes.IntegrationTests.NotesServiceImpl.CustomerDTO customer) {
             return base.Channel.RegisterAsync(customer);
         }
         
-        public Notes.IntegrationTests.NotesServiceIIS.CustomerDTO Login(string login1, string password) {
+        public Notes.IntegrationTests.NotesServiceImpl.CustomerDTO Login(string login1, string password) {
             return base.Channel.Login(login1, password);
         }
         
-        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.CustomerDTO> LoginAsync(string login, string password) {
+        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.CustomerDTO> LoginAsync(string login, string password) {
             return base.Channel.LoginAsync(login, password);
         }
         
-        public Notes.IntegrationTests.NotesServiceIIS.ShortNoteDTO[] GetNotes(System.Guid customerGuid) {
+        public Notes.IntegrationTests.NotesServiceImpl.ShortNoteDTO[] GetNotes(System.Guid customerGuid) {
             return base.Channel.GetNotes(customerGuid);
         }
         
-        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.ShortNoteDTO[]> GetNotesAsync(System.Guid customerGuid) {
+        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.ShortNoteDTO[]> GetNotesAsync(System.Guid customerGuid) {
             return base.Channel.GetNotesAsync(customerGuid);
         }
         
-        public Notes.IntegrationTests.NotesServiceIIS.NoteDTO GetNote(System.Guid guid) {
+        public Notes.IntegrationTests.NotesServiceImpl.NoteDTO GetNote(System.Guid guid) {
             return base.Channel.GetNote(guid);
         }
         
-        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.NoteDTO> GetNoteAsync(System.Guid guid) {
+        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.NoteDTO> GetNoteAsync(System.Guid guid) {
             return base.Channel.GetNoteAsync(guid);
         }
         
-        public Notes.IntegrationTests.NotesServiceIIS.NoteDTO AddNote(Notes.IntegrationTests.NotesServiceIIS.NoteDTO note, System.Guid customerGuid) {
+        public Notes.IntegrationTests.NotesServiceImpl.NoteDTO AddNote(Notes.IntegrationTests.NotesServiceImpl.NoteDTO note, System.Guid customerGuid) {
             return base.Channel.AddNote(note, customerGuid);
         }
         
-        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.NoteDTO> AddNoteAsync(Notes.IntegrationTests.NotesServiceIIS.NoteDTO note, System.Guid customerGuid) {
+        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.NoteDTO> AddNoteAsync(Notes.IntegrationTests.NotesServiceImpl.NoteDTO note, System.Guid customerGuid) {
             return base.Channel.AddNoteAsync(note, customerGuid);
         }
         
-        public Notes.IntegrationTests.NotesServiceIIS.NoteDTO UpdateNote(Notes.IntegrationTests.NotesServiceIIS.NoteDTO note) {
+        public Notes.IntegrationTests.NotesServiceImpl.NoteDTO UpdateNote(Notes.IntegrationTests.NotesServiceImpl.NoteDTO note) {
             return base.Channel.UpdateNote(note);
         }
         
-        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceIIS.NoteDTO> UpdateNoteAsync(Notes.IntegrationTests.NotesServiceIIS.NoteDTO note) {
+        public System.Threading.Tasks.Task<Notes.IntegrationTests.NotesServiceImpl.NoteDTO> UpdateNoteAsync(Notes.IntegrationTests.NotesServiceImpl.NoteDTO note) {
             return base.Channel.UpdateNoteAsync(note);
         }
         
