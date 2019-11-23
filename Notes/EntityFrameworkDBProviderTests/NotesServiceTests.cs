@@ -13,11 +13,11 @@ namespace Notes.IntegrationTests
     {
         private int _freeId;
         private NotesServiceClient _client = null;
-        private readonly IDBProvider _provider = new DBProviderDisconnected();
+        private readonly IDBProvider _provider = new DBProvider();
 
         [TestInitialize]
         [TestCleanup]
-        public void RemoveEveryCustomer()
+        public void Refresh()
         {
             if (_client == null)
             {
@@ -27,7 +27,7 @@ namespace Notes.IntegrationTests
             {
                 _client.Close();
             }
-            ClearDatabase();
+            DeleteCustomers(GetAllCustomers());
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace Notes.IntegrationTests
         {
             var customer = GetAuthorizedCustomerDTO();
             List<NoteDTO> notesToAdd = new List<NoteDTO> { BuildNoteDTO(), BuildNoteDTO(), BuildNoteDTO()};
-            IEnumerable<NoteDTO> addedNotes = notesToAdd.Select(note => _client.AddNote(note, customer.Guid));
+            IEnumerable<NoteDTO> addedNotes = notesToAdd.Select(note => _client.AddNote(note, customer.Guid)).ToList();
 
             foreach (var note in addedNotes)
             {
@@ -114,27 +114,24 @@ namespace Notes.IntegrationTests
             };
         }
 
-        private void ClearDatabase()
+        private void DeleteCustomers(IEnumerable<Customer> customers)
         {
-            DeleteCustomersDisconnected(GetAllCustomers());
+            foreach (Customer customer in customers)
+            {
+                DeleteCustomer(customer);
+            }
+        }
+
+        private void DeleteCustomer(Customer customer)
+        {
+            DBProviderUtil.ActionWithProvider(provider => provider.Delete(customer));
         }
 
         private List<Customer> GetAllCustomers()
         {
-            return _provider.SelectAll<Customer>().ToList();
-        }
-
-        private void DeleteCustomersDisconnected(IEnumerable<Customer> customers)
-        {
-            foreach (Customer customer in customers)
-            {
-                DeleteCustomerDisconnected(customer);
-            }
-        }
-
-        private void DeleteCustomerDisconnected(Customer customer)
-        {
-            _provider.Delete(customer);
+            return DBProviderUtil.FunctionWithProvider(
+                provider => provider.SelectAll<Customer>().ToList()
+            );
         }
         #endregion
     }

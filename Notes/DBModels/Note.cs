@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace Notes.DBModels
 {
-    [DataContract]
+    [DataContract(IsReference = true)]
     public class Note : IDBModel
     {
         #region Fields
@@ -33,9 +33,9 @@ namespace Notes.DBModels
         public string Title
         {
             get => _title;
-            private set
+            set
             {
-                // TODO Process lastEditDate
+                _lastEditDate = DateTime.UtcNow;
                 _title = value;
             }
         }
@@ -43,9 +43,9 @@ namespace Notes.DBModels
         public string Text
         {
             get => _text;
-            private set
+            set
             {
-                // TODO Process lastEditDate
+                _lastEditDate = DateTime.UtcNow;
                 _text = value;
             }
         }
@@ -76,18 +76,16 @@ namespace Notes.DBModels
         #endregion
 
         #region Constructor
-
-        public Note(string title) : this()
+        public Note(string title, string text) : this()
         {
-            _guid = new Guid();
+            _guid = Guid.NewGuid();
             _title = title;
-            _creationDate = DateTime.Now;
-            _lastEditDate = DateTime.Now;
+            _text = text;
         }
 
         public Note()
         {
-
+            _creationDate = DateTime.UtcNow;
         }
         #endregion
 

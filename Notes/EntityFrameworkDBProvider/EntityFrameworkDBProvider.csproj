@@ -52,7 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextUtil.cs" />
-    <Compile Include="DBProviderDisconnected.cs" />
+    <Compile Include="DBProvider.cs" />
+    <Compile Include="DBProviderUtil.cs" />
     <Compile Include="Migrations\201911190836312_NotesMigration.cs" />
     <Compile Include="Migrations\201911190836312_NotesMigration.Designer.cs">
       <DependentUpon>201911190836312_NotesMigration.cs</DependentUpon>

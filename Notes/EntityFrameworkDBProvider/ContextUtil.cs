@@ -1,7 +1,6 @@
-﻿using Notes.EntityFrameworkDBProvider;
-using System;
+﻿using System;
 
-namespace Notes.RESTService.Repository
+namespace Notes.EntityFrameworkDBProvider
 {
     public class ContextUtil
     {

@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace Notes.DBModels
 {
-    [DataContract]
+    [DataContract(IsReference = true)]
     public class Customer : IDBModel
     {
         #region Fields
@@ -76,7 +76,7 @@ namespace Notes.DBModels
         #endregion
 
         #region Constructor
-        public Customer(Guid guid, string firstName, string lastName, string login, string email, string password, DateTime lastLoginDate)
+        public Customer(Guid guid, string firstName, string lastName, string login, string email, string password, DateTime lastLoginDate): this()
         {
             _guid = guid;
             _firstName = firstName;
@@ -112,6 +112,13 @@ namespace Notes.DBModels
             _notes = new List<Note>();
         }
         #endregion
+
+        public void AddNote(Note note)
+        {
+            note.OwnerGuid = Guid;
+            note.Owner = this;
+            Notes.Add(note);
+        }
 
         public bool CheckPassword(string password)
         {

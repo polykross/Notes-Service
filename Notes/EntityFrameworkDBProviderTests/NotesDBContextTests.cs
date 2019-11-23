@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Notes.DBModels;
 using Notes.DBProviders;
 using Notes.EntityFrameworkDBProvider;
@@ -12,13 +13,12 @@ namespace Notes.IntegrationTests
     {
 
         private int _freeNumber;
-        private readonly IDBProvider _provider = new DBProviderDisconnected();
 
         [TestInitialize]
         [TestCleanup]
-        public void RemoveEveryCustomer()
+        public void ClearDatabase()
         {
-            DeleteCustomersDisconnected(GetAllCustomers());
+            DeleteCustomers(GetAllCustomers());
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace Notes.IntegrationTests
         public void CustomersDisconnectedRemovalTest()
         {
             AddCustomersDisconnected(10);
-            DeleteCustomersDisconnected(GetAllCustomers());
+            DeleteCustomers(GetAllCustomers());
             Assert.IsTrue(!GetAllCustomers().Any());
         }
 
@@ -49,9 +49,9 @@ namespace Notes.IntegrationTests
         [TestMethod]
         public void CustomerDisconnectedEditingTest()
         {
-            Customer addedCustomer = AddCustomerDisconnected();
+            Customer addedCustomer = AddCustomerConnected();
             addedCustomer.Password = "MyNonExistingPassword";
-            EditCustomerDisconnected(addedCustomer);
+            EditCustomerConnected(addedCustomer);
             Customer editedCustomer = GetCustomerById(addedCustomer.Guid);
             Assert.AreEqual(addedCustomer.Password, editedCustomer.Password);
         }
@@ -61,43 +61,49 @@ namespace Notes.IntegrationTests
         {
             for (int i = 0; i < times; ++i)
             {
-                AddCustomerDisconnected();
+                AddCustomerConnected();
             }
         }
 
-        private Customer AddCustomerDisconnected()
+        private Customer AddCustomerConnected()
         {
             var customer = GenerateCustomer();
-            _provider.Add(customer);
+            DBProviderUtil.ActionWithProvider(provider => provider.Add(customer));
             return customer;
         }
 
-        private void EditCustomerDisconnected(Customer addedCustomer)
+        private void EditCustomerConnected(Customer customer)
         {
-            _provider.Update(addedCustomer);
+            DBProviderUtil.ActionWithProvider(provider => provider.Update(customer));
         }
 
-        private void DeleteCustomersDisconnected(IEnumerable<Customer> customers)
+        private void DeleteCustomers(IEnumerable<Customer> customers)
         {
             foreach (Customer customer in customers)
             {
-                DeleteCustomerDisconnected(customer);
+                DeleteCustomer(customer);
             }
         }
 
-        private void DeleteCustomerDisconnected(Customer customer)
+        private void DeleteCustomer(Customer customer)
         {
-            _provider.Delete(customer);
+            DBProviderUtil.ActionWithProvider(provider => provider.Delete(customer));
         }
 
         private List<Customer> GetAllCustomers()
         {
-            return _provider.SelectAll<Customer>().ToList();
+            return DBProviderUtil.FunctionWithProvider(
+                provider => provider.SelectAll<Customer>().ToList()
+            );
         }
 
         private Customer GetCustomerById(System.Guid id)
         {
-            return _provider.Select<Customer>(c => c.Guid.ToString() == id.ToString());
+            Customer customer = null;
+            DBProviderUtil.ActionWithProvider(provider => 
+                customer = provider.Select<Customer>(c => c.Guid.ToString() == id.ToString())
+            );
+            return customer;
         }
 
         private Customer GenerateCustomer()
