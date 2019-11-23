@@ -22,18 +22,18 @@ namespace Notes.IntegrationTests
         }
 
         [TestMethod]
-        public void CustomersDisconnectedAdditionTest()
+        public void CustomersAdditionTest()
         {
             int customersAmount = 3;
-            AddCustomersDisconnected(customersAmount);
+            AddCustomers(customersAmount);
             var customers = GetAllCustomers();
             Assert.IsTrue(customers.All(c => c != null) && customers.Count() == customersAmount);
         }
 
         [TestMethod]
-        public void CustomersDisconnectedRemovalTest()
+        public void CustomersRemovalTest()
         {
-            AddCustomersDisconnected(10);
+            AddCustomers(10);
             DeleteCustomers(GetAllCustomers());
             Assert.IsTrue(!GetAllCustomers().Any());
         }
@@ -42,37 +42,37 @@ namespace Notes.IntegrationTests
         public void CustomersFetchingTest()
         {
             int customersAmount = 10;
-            AddCustomersDisconnected(customersAmount);
+            AddCustomers(customersAmount);
             Assert.AreEqual(GetAllCustomers().Count, customersAmount);
         }
 
         [TestMethod]
-        public void CustomerDisconnectedEditingTest()
+        public void CustomerEditingTest()
         {
-            Customer addedCustomer = AddCustomerConnected();
+            Customer addedCustomer = AddCustomer();
             addedCustomer.Password = "MyNonExistingPassword";
-            EditCustomerConnected(addedCustomer);
+            EditCustomer(addedCustomer);
             Customer editedCustomer = GetCustomerById(addedCustomer.Guid);
             Assert.AreEqual(addedCustomer.Password, editedCustomer.Password);
         }
 
         #region Utils
-        private void AddCustomersDisconnected(int times)
+        private void AddCustomers(int times)
         {
             for (int i = 0; i < times; ++i)
             {
-                AddCustomerConnected();
+                AddCustomer();
             }
         }
 
-        private Customer AddCustomerConnected()
+        private Customer AddCustomer()
         {
             var customer = GenerateCustomer();
             DBProviderUtil.ActionWithProvider(provider => provider.Add(customer));
             return customer;
         }
 
-        private void EditCustomerConnected(Customer customer)
+        private void EditCustomer(Customer customer)
         {
             DBProviderUtil.ActionWithProvider(provider => provider.Update(customer));
         }

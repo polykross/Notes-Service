@@ -13,7 +13,6 @@ namespace Notes.IntegrationTests
     {
         private int _freeId;
         private NotesServiceClient _client = null;
-        private readonly IDBProvider _provider = new DBProvider();
 
         [TestInitialize]
         [TestCleanup]
@@ -75,7 +74,7 @@ namespace Notes.IntegrationTests
         public void NotesAdditionFailureTest()
         {
             var customer = GetAuthorizedCustomerDTO();
-            List<NoteDTO> notesToAdd = new List<NoteDTO> { BuildNoteDTO(), BuildNoteDTO(), BuildNoteDTO()};
+            var notesToAdd = new List<NoteDTO> { BuildNoteDTO(), BuildNoteDTO(), BuildNoteDTO()};
             IEnumerable<NoteDTO> addedNotes = notesToAdd.Select(note => _client.AddNote(note, customer.Guid)).ToList();
 
             foreach (var note in addedNotes)
@@ -84,7 +83,82 @@ namespace Notes.IntegrationTests
             }
         }
 
+        [TestMethod]
+        public void GetNoteTest()
+        {
+            var addedNotes = GetAddedNotes(GetAuthorizedCustomerDTO());
+            foreach (var existingNote in addedNotes)
+            {
+                Assert.IsNotNull(_client.GetNote(existingNote.Guid));
+            }
+        }
+
+        [TestMethod]
+        public void GetNoteFailureTest()
+        {
+            var removedNotes = GetRemovedNotes(GetAuthorizedCustomerDTO());
+            foreach (var existingNote in removedNotes)
+            {
+                Assert.IsNull(_client.GetNote(existingNote.Guid));
+            }
+        }
+
+        [TestMethod]
+        public void GetNotesTest()
+        {
+            var customer = GetAuthorizedCustomerDTO();
+            IEnumerable<ShortNoteDTO> addedShortNotes = GetAddedNotes(customer)
+                    .Select(addedNote => new ShortNoteDTO{Guid = addedNote.Guid, Title = addedNote.Title});
+            
+            IEnumerable<ShortNoteDTO> customersShortNotes = _client.GetNotes(customer.Guid);
+
+            foreach (var aNote in addedShortNotes)
+            {
+                var customerHasThisNode =
+                    customersShortNotes.Any(note => 
+                        note.Guid.Equals(aNote.Guid) && 
+                        note.Title.Equals(aNote.Title)
+                    );
+                Assert.IsTrue(customerHasThisNode);
+            }
+        }
+
+        [TestMethod]
+        public void GetNotesFailureTest()
+        {
+            var customer = GetAuthorizedCustomerDTO();
+            IEnumerable<NoteDTO> removedNotes = GetRemovedNotes(customer);
+            IEnumerable<ShortNoteDTO> customersShortNotes = _client.GetNotes(customer.Guid);
+
+            foreach (var aNote in removedNotes)
+            {
+                var customerHasNoThisNode = customersShortNotes.All(note => !note.Guid.Equals(aNote.Guid));
+                Assert.IsTrue(customerHasNoThisNode);
+            }
+        }
+
+        // TODO: Add UpdateNote test
+
+        // TODO: Add DeleteNote test
+
         #region Utils
+
+        private IEnumerable<NoteDTO> GetRemovedNotes(CustomerDTO customer)
+        {
+            var addedNotes = GetAddedNotes(customer).ToList();
+            foreach (var addedNote in addedNotes)
+            {
+                _client.DeleteNote(addedNote.Guid);
+            }
+            return addedNotes;
+        }
+
+        private IEnumerable<NoteDTO> GetAddedNotes(CustomerDTO customer)
+        {
+            var notesToAdd = new List<NoteDTO> { BuildNoteDTO(), BuildNoteDTO(), BuildNoteDTO() };
+            return notesToAdd.Select(note => _client.AddNote(note, customer.Guid)).ToList();
+        }
+
         private CustomerDTO GetAuthorizedCustomerDTO()
         {
             var registered = _client.Register(BuildUniqueCustomerDTO());

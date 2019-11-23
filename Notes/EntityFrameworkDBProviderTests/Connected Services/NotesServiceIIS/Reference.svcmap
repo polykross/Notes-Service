@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9a76a3de-2b10-4814-abe5-de64e53f0e40" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="637e6b44-e032-4a88-b2ec-3ba9241960a0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:10053/NotesServiceIIS.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="NotesServiceIIS.wsdl" MetadataType="Wsdl" ID="fe8c6814-36ca-44aa-9d34-9d64b9dafca8" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?wsdl" />
-    <MetadataFile FileName="NotesServiceIIS.xsd" MetadataType="Schema" ID="2700cee5-218c-42cf-809b-9b3b55711ad1" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd0" />
-    <MetadataFile FileName="NotesServiceIIS1.xsd" MetadataType="Schema" ID="3fc11488-6347-47b8-84c5-c7510d3a1704" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd1" />
-    <MetadataFile FileName="NotesServiceIIS2.xsd" MetadataType="Schema" ID="f52620f8-e41d-427c-ab03-f35a93c3dc70" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd2" />
-    <MetadataFile FileName="NotesServiceIIS.disco" MetadataType="Disco" ID="e44eef7a-22b8-4c0c-b623-46317eac31ab" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?disco" />
+    <MetadataFile FileName="NotesServiceIIS.wsdl" MetadataType="Wsdl" ID="44ddf2b2-63b2-413a-9f2c-b3bca3ee1afe" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?wsdl" />
+    <MetadataFile FileName="NotesServiceIIS.xsd" MetadataType="Schema" ID="a560e43a-4a09-4cef-bbed-fc0374520172" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd0" />
+    <MetadataFile FileName="NotesServiceIIS1.xsd" MetadataType="Schema" ID="22f534c2-f8d4-4055-a331-b5e8a66b8413" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd1" />
+    <MetadataFile FileName="NotesServiceIIS2.xsd" MetadataType="Schema" ID="ac4a314d-1b52-4c4c-93a2-00cdf7da252f" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd2" />
+    <MetadataFile FileName="NotesServiceIIS.disco" MetadataType="Disco" ID="6906f995-68ae-4778-939c-ae39d1fb6a42" SourceId="1" SourceUrl="http://localhost:10053/NotesServiceIIS.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
