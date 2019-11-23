@@ -19,10 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFServer", "WCFServer\WCFS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationContract", "CommunicationContract\CommunicationContract.csproj", "{7492C490-A9A6-4207-A555-84114AEBE4F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "EntityFrameworkDBProviderTests\IntegrationTests.csproj", "{5F6A6BED-CBD0-4A5E-8238-BFF7152AECC7}"
-	ProjectSection(ProjectDependencies) = postProject
-		{BCC173D1-5CF6-4357-B243-8EFDEE70ADBA} = {BCC173D1-5CF6-4357-B243-8EFDEE70ADBA}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{5F6A6BED-CBD0-4A5E-8238-BFF7152AECC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

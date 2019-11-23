@@ -11,11 +11,11 @@ namespace Notes.IntegrationTests
     public class LoggerTests
     {
         [TestMethod]
-        public void Log4NetTest()
+        public void Log4NetConsoleAppenderTest()
         {
             var patternLayout = new PatternLayout
             {
-                ConversionPattern = "%date{dd MMM yyyy HH:mm:ss} | %class | [%level]: %message%newline"
+                ConversionPattern = "%date{dd MMM yyyy HH:mm:ss} [%level] [%class] [%method] -> %message%newline"
             };
             patternLayout.ActivateOptions();
 
@@ -29,7 +29,7 @@ namespace Notes.IntegrationTests
             consoleAppender.ActivateOptions();
             BasicConfigurator.Configure(consoleAppender);
 
-            ILog logger = LogManager.GetLogger(typeof(LoggerTests));
+            var logger = LogManager.GetLogger(typeof(LoggerTests));
 
             logger.Fatal("Fatal");
             logger.Error("Error");
@@ -37,5 +37,6 @@ namespace Notes.IntegrationTests
             logger.Info("Info");
             logger.Debug("Debug");
         }
+
     }
 }
