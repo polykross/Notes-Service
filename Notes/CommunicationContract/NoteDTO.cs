@@ -67,5 +67,16 @@ namespace Notes.CommunicationContract
             _lastEditDate = lastEditDate;
         }
         #endregion
+
+        public override string ToString()
+        {
+            return "NoteDTO { " +
+                   $"Guid: {Guid}, " +
+                   $"Title: {Title}, " +
+                   $"Text: {Text}, " +
+                   $"CreationDate: {CreationDate}, " +
+                   $"LastEditDate: {LastEditDate}" +
+            " }";
+        }
     }
 }

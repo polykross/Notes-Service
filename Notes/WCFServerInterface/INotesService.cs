@@ -9,6 +9,16 @@ namespace Notes.Server.WCFServerInterface
     public interface INotesService
     {
         /// <summary>
+        /// Check if login exists.
+        /// </summary>
+        /// <param name="login">Login to check.</param>
+        /// <returns>
+        /// True iff customer with such login exists in the system.
+        /// </returns>
+        [OperationContract]
+        bool LoginExists(string login);
+
+        /// <summary>
         /// Register new customer in the system.
         /// </summary>
         /// <param name="customer">Information about customer. Guid and LastLoginDate can be empty.</param>

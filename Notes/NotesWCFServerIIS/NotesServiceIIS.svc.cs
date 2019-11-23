@@ -3,12 +3,25 @@ using Notes.Server.NotesServiceImplementation;
 using Notes.Server.WCFServerInterface;
 using System;
 using System.Collections.Generic;
+using Notes.Logger;
 
 namespace Notes.Server.WCFServerIIS
 {
     public class NotesServiceIIS : INotesService
     {
-        private readonly INotesService _service = new NotesService();
+        private readonly INotesService _service;
+
+        public NotesServiceIIS()
+        {
+            _service = new NotesService(
+                logger: LoggerHelper.GetLogger(typeof(NotesServiceIIS))
+            );
+        }
+
+        public bool LoginExists(string login)
+        {
+            return _service.LoginExists(login);
+        }
 
         public CustomerDTO Register(CustomerDTO customer)
         {

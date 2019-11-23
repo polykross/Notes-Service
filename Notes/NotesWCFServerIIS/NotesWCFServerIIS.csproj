@@ -47,6 +47,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web.DynamicData" />
@@ -106,6 +109,10 @@
     <ProjectReference Include="..\EntityFrameworkDBProvider\EntityFrameworkDBProvider.csproj">
       <Project>{23288084-96f7-467b-b952-d27620ad2a0b}</Project>
       <Name>EntityFrameworkDBProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{9dfa1ba4-e14c-46ec-9a12-72734078b0a6}</Project>
+      <Name>Logger</Name>
     </ProjectReference>
     <ProjectReference Include="..\NotesServiceImplementation\NotesServiceImplementation.csproj">
       <Project>{3960a5bd-b416-4f6f-8b77-69dd4c68fbd8}</Project>

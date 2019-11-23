@@ -83,6 +83,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{9dfa1ba4-e14c-46ec-9a12-72734078b0a6}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NotesServiceImplementation\NotesServiceImplementation.csproj">
       <Project>{3960a5bd-b416-4f6f-8b77-69dd4c68fbd8}</Project>
       <Name>NotesServiceImplementation</Name>

@@ -1,60 +1,128 @@
-﻿using Notes.CommunicationContract;
+﻿using log4net;
+using Notes.CommunicationContract;
 using Notes.DBModels;
 using Notes.EntityFrameworkDBProvider;
 using Notes.Server.WCFServerInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Notes.Logger;
 
 namespace Notes.Server.NotesServiceImplementation
 {
     public class NotesService : INotesService
     {
+        private readonly ILog _logger;
+
+        public NotesService()
+        {
+            _logger = LoggerHelper.GetLogger(typeof(NotesService));
+        }
+
+        public NotesService(ILog logger)
+        {
+            _logger = logger;
+        }
+
+        /// <summary>
+        /// Check if login exists.
+        /// </summary>
+        /// <param name="login">Login to check.</param>
+        /// <returns>
+        /// True iff customer with such login exists in the system.
+        /// </returns>
+        public bool LoginExists(string login)
+        {
+            var result = !IsLoginExists(login);
+            _logger.Debug($"Customer's login checking: login = {login}, result = {result}");
+            return result;
+        }
+
         public CustomerDTO Register(CustomerDTO customer)
         {
-            var isUnique = DBProviderUtil.FunctionWithProvider(p => 
-                p.Select<Customer>(c => c.Login == customer.Login) == null
-            );
-            if (!isUnique)
+            if (!IsLoginExists(customer.Login))
             {
+                _logger.Error($"Customer's unsuccessful registration attempt due to not unique login: {customer}");
                 return null;
             }
-            return DBProviderUtil.TryFunctionWithProvider(p =>
+
+            var result = DBProviderUtil.FunctionWithProvider(p =>
             {
                 var newCustomer = CreateNewCustomerFromDTO(customer);
                 p.Add(newCustomer);
                 return CustomerToDTO(newCustomer);
             });
+
+            if (result == null)
+            {
+                _logger.Error($"Customer's unsuccessful registration attempt: {customer}");
+            }
+            else
+            {
+                _logger.Debug($"Customer's successful registration attempt: {customer}");
+            }
+
+            return result;
         }
 
         public CustomerDTO Login(string login, string password)
         {
-            return DBProviderUtil.TryFunctionWithProvider(p =>
+            return DBProviderUtil.FunctionWithProvider(p =>
             {
                 var customer = p.Select<Customer>(c => c.Login == login);
-                return customer?.CheckPassword(password) == true ? GetLoggedInCustomerDTO(customer) : null;
+                var isPasswordCorrect = customer?.CheckPassword(password) == true;
+                if (isPasswordCorrect)
+                {
+                    _logger.Debug($"Customer's successful login attempt: {customer}");
+                    return GetLoggedInCustomerDTO(customer);
+                }
+
+                _logger.Error($"Customer's unsuccessful login attempt: {customer}");
+                return null;
             });
         }
 
         public List<ShortNoteDTO> GetNotes(Guid customerGuid)
         {
-            return DBProviderUtil.TryFunctionWithProvider(p =>
+            var result = DBProviderUtil.FunctionWithProvider(p =>
                 p.Select<Customer>(c => c.Guid == customerGuid).Notes.Select(NoteToShortDTO).ToList()
             );
+
+            if (result == null)
+            {
+                _logger.Error($"Customer's unsuccessful notes fetching attempt: customerGuid = {customerGuid}");
+            }
+            else
+            {
+                _logger.Debug($"Customer's successful notes fetching attempt: customerGuid = {customerGuid}, notes = [ {string.Join(", ", result)} ]");
+            }
+
+            return result;
         }
 
         public NoteDTO GetNote(Guid guid)
         {
-            return DBProviderUtil.TryFunctionWithProvider(p =>
+            var result = DBProviderUtil.FunctionWithProvider(p =>
             {
                 var note = p.Select<Note>(n => n.Guid == guid);
                 return note != null ? NoteToDTO(note) : null;
             });
+
+            if (result == null)
+            {
+                _logger.Error($"Unsuccessful note fetching attempt with guid: {guid}");
+            }
+            else
+            {
+                _logger.Debug($"Successful note fetching attempt with guid: {guid}");
+            }
+
+            return result;
         }
 
         public NoteDTO AddNote(NoteDTO note, Guid customerGuid)
         {
-            return DBProviderUtil.TryFunctionWithProvider(p =>
+            var result = DBProviderUtil.FunctionWithProvider(p =>
             {
                 var customer = p.Select<Customer>(c => c.Guid == customerGuid);
                 if (customer == null)
@@ -71,11 +139,22 @@ namespace Notes.Server.NotesServiceImplementation
                 p.Update(customer);
                 return NoteToDTO(newNote);
             });
+
+            if (result == null)
+            {
+                _logger.Error($"Customer's unsuccessful note addition attempt: customerGuid = {customerGuid}, {note}");
+            }
+            else
+            {
+                _logger.Debug($"Customer's successful note fetching attempt: customerGuid = {customerGuid}, {note}");
+            }
+
+            return result;
         }
 
         public NoteDTO UpdateNote(NoteDTO note)
         {
-            return DBProviderUtil.TryFunctionWithProvider(p =>
+            var result = DBProviderUtil.FunctionWithProvider(p =>
             {
                 var updateableNote = p.Select<Note>(n => n.Guid == note.Guid);
                 if (updateableNote == null)
@@ -87,11 +166,22 @@ namespace Notes.Server.NotesServiceImplementation
                 p.Update(updateableNote);
                 return NoteToDTO(updateableNote);
             });
+
+            if (result == null)
+            {
+                _logger.Error($"Customer's unsuccessful note update attempt: {note}");
+            }
+            else
+            {
+                _logger.Debug($"Customer's successful note update attempt: {note}");
+            }
+
+            return result;
         }
 
         public bool DeleteNote(Guid guid)
         {
-            return DBProviderUtil.TryFunctionWithProvider(p =>
+            var result = DBProviderUtil.FunctionWithProvider(p =>
             {
                 var note = p.Select<Note>(n => n.Guid == guid);
                 if (note == null)
@@ -101,9 +191,29 @@ namespace Notes.Server.NotesServiceImplementation
                 p.Delete(note);
                 return true;
             });
+
+            if (!result)
+            {
+                _logger.Error($"Customer's unsuccessful note delete attempt: note guid = {guid}");
+            }
+            else
+            {
+                _logger.Debug($"Customer's successful note delete attempt: note guid = {guid}");
+            }
+
+            return result;
         }
 
         #region StaticUtilFunctions
+
+        private static bool IsLoginExists(string login)
+        {
+            var isUnique = DBProviderUtil.FunctionWithProvider(p =>
+                p.Select<Customer>(c => c.Login == login) == null
+            );
+            return isUnique;
+        }
+        
         private static Note CreateNewNoteFromDTO(NoteDTO dto)
         {
             return new Note(title: dto.Title, text: dto.Text);

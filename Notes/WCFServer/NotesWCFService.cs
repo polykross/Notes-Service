@@ -1,9 +1,9 @@
-﻿using Notes.Server.NotesServiceImplementation;
+﻿using log4net;
+using Notes.Logger;
+using Notes.Server.NotesServiceImplementation;
 using System;
 using System.ServiceModel;
 using System.ServiceProcess;
-using log4net;
-using log4net.Config;
 
 namespace Notes.Server.WCFServer
 {
@@ -14,10 +14,12 @@ namespace Notes.Server.WCFServer
         internal const string CurrentServiceSource = "NotesServiceSource";
         internal const string CurrentServiceLogName = "NotesServiceLogName";
         internal const string CurrentServiceDescription = "Notes for learning purposes.";
-        private ServiceHost _serviceHost = null;
+        private ServiceHost _serviceHost;
+        private readonly ILog _logger;
 
         public NotesWCFService()
         {
+            _logger = LoggerHelper.GetLogger(typeof(NotesWCFService));
             InitializeComponent();
             ServiceName = CurrentServiceName;
             AppDomain.CurrentDomain.UnhandledException += UnhandledException;
@@ -25,7 +27,7 @@ namespace Notes.Server.WCFServer
 
         private void UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            //TODO implement Logging
+            _logger.Error($"Unhandled exception, sender: {sender}, exception: {e}");
         }
 
         protected override void OnStart(string[] args)
@@ -45,7 +47,7 @@ namespace Notes.Server.WCFServer
             }
             catch (Exception ex)
             {
-                //TODO implement Logging
+                _logger.Error($"Exception during service hosting: {ex}");
                 throw;
             }
         }
@@ -59,7 +61,8 @@ namespace Notes.Server.WCFServer
             }
             catch (Exception ex)
             {
-                //TODO add Logging
+                _logger.Error(ex.ToString());
+                throw;
             }
         }
     }

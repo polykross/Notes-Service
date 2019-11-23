@@ -90,5 +90,17 @@ namespace Notes.CommunicationContract
             _lastLoginDate = lastLoginDate;
         }
         #endregion
+
+        public override string ToString()
+        {
+            return "CustomerDTO: { " + 
+                   $"login: {Login}, " +
+                   $"password: {Password}, " +
+                   $"firstName: {FirstName}, " +
+                   $"lastName: {LastName}, " +
+                   $"email: {LastName}, " +
+                   $"lastLoginDate: {LastLoginDate}" + 
+            " }";
+        }
     }
 }

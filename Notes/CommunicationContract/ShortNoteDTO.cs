@@ -34,5 +34,13 @@ namespace Notes.CommunicationContract
             _title = title;
         }
         #endregion
+
+        public override string ToString()
+        {
+            return "ShortNoteDTO: { " +
+                   $"Guid: {Guid}, " +
+                   $"Title: {Title}" +
+            " }";
+        }
     }
 }

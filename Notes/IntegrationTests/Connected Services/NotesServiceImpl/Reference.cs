@@ -328,6 +328,12 @@ namespace Notes.IntegrationTests.NotesServiceImpl {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="NotesServiceImpl.INotesService")]
     public interface INotesService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/LoginExists", ReplyAction="http://tempuri.org/INotesService/LoginExistsResponse")]
+        bool LoginExists(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/LoginExists", ReplyAction="http://tempuri.org/INotesService/LoginExistsResponse")]
+        System.Threading.Tasks.Task<bool> LoginExistsAsync(string login);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotesService/Register", ReplyAction="http://tempuri.org/INotesService/RegisterResponse")]
         Notes.IntegrationTests.NotesServiceImpl.CustomerDTO Register(Notes.IntegrationTests.NotesServiceImpl.CustomerDTO customer);
         
@@ -396,6 +402,14 @@ namespace Notes.IntegrationTests.NotesServiceImpl {
         
         public NotesServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool LoginExists(string login) {
+            return base.Channel.LoginExists(login);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LoginExistsAsync(string login) {
+            return base.Channel.LoginExistsAsync(login);
         }
         
         public Notes.IntegrationTests.NotesServiceImpl.CustomerDTO Register(Notes.IntegrationTests.NotesServiceImpl.CustomerDTO customer) {

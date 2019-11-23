@@ -91,7 +91,14 @@ namespace Notes.DBModels
 
         public override string ToString()
         {
-            return $"{_guid} -> ({_title}, {_text})";
+            return "Note: { " +
+                   $"Guid: {Guid}, " +
+                   $"Title: {Title}, " +
+                   $"Text: {Text}, " +
+                   $"CreationDate: {CreationDate}, " +
+                   $"LastEditDate: {LastEditDate}, " +
+                   $"OwnerGuid: {OwnerGuid}" +
+            " }";
         }
     }
 }

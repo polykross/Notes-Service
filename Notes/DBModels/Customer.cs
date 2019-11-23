@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 
 namespace Notes.DBModels
@@ -127,7 +128,16 @@ namespace Notes.DBModels
 
         public override string ToString()
         {
-            return $"{_guid} -> ({_login}, {_password})";
+            var notesGuidsString = $"[ {string.Join(" ,", Notes.Select(n => n.Guid).ToList())} ]";
+            return "Customer: { " +
+                   $"Login: {Login}, " +
+                   $"Password: {Password}, " +
+                   $"FirstName: {FirstName}, " +
+                   $"LastName: {LastName}, " +
+                   $"LastName: {LastName}, " +
+                   $"LastLoginDate: {LastLoginDate}, " +
+                   $"NotesGuids: {notesGuidsString}" +
+            " }";
         }
     }
 }

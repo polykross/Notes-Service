@@ -28,17 +28,23 @@ namespace Notes.IntegrationTests
         }
 
         [TestMethod]
-        public void CustomersRegistration()
+        public void LoginExistsTest()
         {
-            Assert.IsNotNull(_client.Register(_util.BuildUniqueCustomerDTO()));
+            Assert.IsFalse(_client.LoginExists("NonExistentLogin"));
         }
 
         [TestMethod]
-        public void CustomersAuthorization()
+        public void LoginNotExistsTest()
         {
-            var registered = _client.Register(_util.BuildUniqueCustomerDTO());
-            Assert.IsNotNull(registered);
-            Assert.IsNotNull(_client.Login(registered.Login, registered.Password));
+            var builtDTO = _util.BuildUniqueCustomerDTO();
+            _client.Register(builtDTO);
+            Assert.IsTrue(_client.LoginExists(builtDTO.Login));
+        }
+
+        [TestMethod]
+        public void CustomersRegistrationTest()
+        {
+            Assert.IsNotNull(_client.Register(_util.BuildUniqueCustomerDTO()));
         }
 
         [TestMethod]
@@ -47,6 +53,14 @@ namespace Notes.IntegrationTests
             var builtDTO = _util.BuildUniqueCustomerDTO();
             _client.Register(builtDTO);
             Assert.IsNull(_client.Register(builtDTO));
+        }
+
+        [TestMethod]
+        public void CustomersAuthorizationTest()
+        {
+            var registered = _client.Register(_util.BuildUniqueCustomerDTO());
+            Assert.IsNotNull(registered);
+            Assert.IsNotNull(_client.Login(registered.Login, registered.Password));
         }
 
         [TestMethod]

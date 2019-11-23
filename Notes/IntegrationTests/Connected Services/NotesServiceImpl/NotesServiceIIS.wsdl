@@ -7,6 +7,12 @@
       <xsd:import schemaLocation="http://localhost:10053/NotesServiceIIS.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Notes.CommunicationContract" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="INotesService_LoginExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginExists" />
+  </wsdl:message>
+  <wsdl:message name="INotesService_LoginExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginExistsResponse" />
+  </wsdl:message>
   <wsdl:message name="INotesService_Register_InputMessage">
     <wsdl:part name="parameters" element="tns:Register" />
   </wsdl:message>
@@ -50,6 +56,10 @@
     <wsdl:part name="parameters" element="tns:DeleteNoteResponse" />
   </wsdl:message>
   <wsdl:portType name="INotesService">
+    <wsdl:operation name="LoginExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotesService/LoginExists" message="tns:INotesService_LoginExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotesService/LoginExistsResponse" message="tns:INotesService_LoginExists_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Register">
       <wsdl:input wsaw:Action="http://tempuri.org/INotesService/Register" message="tns:INotesService_Register_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INotesService/RegisterResponse" message="tns:INotesService_Register_OutputMessage" />
@@ -81,6 +91,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_INotesService" type="tns:INotesService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoginExists">
+      <soap:operation soapAction="http://tempuri.org/INotesService/LoginExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Register">
       <soap:operation soapAction="http://tempuri.org/INotesService/Register" style="document" />
       <wsdl:input>

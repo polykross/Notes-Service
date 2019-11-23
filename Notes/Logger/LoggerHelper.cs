@@ -14,6 +14,10 @@ namespace Notes.Logger
         private const string Layout = "%date{dd MMM yyyy HH:mm:ss} [%level] [%class] [%method] -> %message%newline";
         #endregion
 
+        public LoggerHelper()
+        {
+        }
+
         #region API
         public static ILog GetLogger(Type type)
         {
