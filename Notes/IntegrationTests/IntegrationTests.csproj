@@ -116,6 +116,10 @@
       <Project>{23288084-96F7-467B-B952-D27620AD2A0B}</Project>
       <Name>EntityFrameworkDBProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{9dfa1ba4-e14c-46ec-9a12-72734078b0a6}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NotesServiceImplementation\NotesServiceImplementation.csproj">
       <Project>{3960a5bd-b416-4f6f-8b77-69dd4c68fbd8}</Project>
       <Name>NotesServiceImplementation</Name>
