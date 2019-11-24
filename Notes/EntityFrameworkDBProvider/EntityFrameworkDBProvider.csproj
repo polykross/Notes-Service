@@ -56,13 +56,9 @@
   <ItemGroup>
     <Compile Include="DBProvider.cs" />
     <Compile Include="DBProviderUtil.cs" />
-    <Compile Include="Migrations\201911190836312_NotesMigration.cs" />
-    <Compile Include="Migrations\201911190836312_NotesMigration.Designer.cs">
-      <DependentUpon>201911190836312_NotesMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911211909535_Update_Customer_Migration.cs" />
-    <Compile Include="Migrations\201911211909535_Update_Customer_Migration.Designer.cs">
-      <DependentUpon>201911211909535_Update_Customer_Migration.cs</DependentUpon>
+    <Compile Include="Migrations\201911240256315_NotesMigration.cs" />
+    <Compile Include="Migrations\201911240256315_NotesMigration.Designer.cs">
+      <DependentUpon>201911240256315_NotesMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelConfiguration\CustomerConfiguration.cs" />
@@ -91,11 +87,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911190836312_NotesMigration.resx">
-      <DependentUpon>201911190836312_NotesMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911211909535_Update_Customer_Migration.resx">
-      <DependentUpon>201911211909535_Update_Customer_Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911240256315_NotesMigration.resx">
+      <DependentUpon>201911240256315_NotesMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

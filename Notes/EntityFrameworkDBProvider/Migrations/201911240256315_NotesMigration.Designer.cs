@@ -2,17 +2,18 @@
 namespace Notes.EntityFrameworkDBProvider.Migrations
 {
     using System.CodeDom.Compiler;
+    using System.Data.Entity.Migrations;
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
-
+    
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Update_Customer_Migration : IMigrationMetadata
+    public sealed partial class NotesMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_Customer_Migration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NotesMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201911211909535_Update_Customer_Migration"; }
+            get { return "201911240256315_NotesMigration"; }
         }
         
         string IMigrationMetadata.Source

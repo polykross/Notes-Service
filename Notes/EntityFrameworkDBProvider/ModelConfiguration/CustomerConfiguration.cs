@@ -10,8 +10,8 @@ namespace Notes.EntityFrameworkDBProvider.ModelConfiguration
             ToTable("Customers");
             HasKey(customer => customer.Guid);
             Property(customer => customer.Guid).HasColumnName("Id").IsRequired();
-            Property(customer => customer.FirstName).HasColumnName("FirstName").HasMaxLength(50).IsRequired();
-            Property(customer => customer.LastName).HasColumnName("LastName").HasMaxLength(50).IsRequired();
+            Property(customer => customer.FirstName).HasColumnName("FirstName").HasMaxLength(55).IsRequired();
+            Property(customer => customer.LastName).HasColumnName("LastName").HasMaxLength(55).IsRequired();
             Property(customer => customer.Login).HasColumnName("Login")
                 .HasColumnType("nvarchar").HasMaxLength(26).IsRequired();
             HasIndex(customer => customer.Login).IsUnique(true);

@@ -78,6 +78,25 @@ namespace Notes.IntegrationTests
         }
 
         [TestMethod]
+        public void AuthorizationLongPasswordFailureTest()
+        {
+            var registered = _client.Register(_util.BuildUniqueCustomerDTO());
+            Assert.IsNotNull(registered);
+            Assert.IsNull(_client.Login(registered.Login, "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"));
+        }
+
+        [TestMethod]
+        public void AuthorizationLongPasswordTest()
+        {
+            var customer = _util.BuildUniqueCustomerDTO();
+            customer.Password =
+                "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
+            var registered = _client.Register(customer);
+            Assert.IsNotNull(registered);
+            Assert.IsNotNull(_client.Login(registered.Login, registered.Password));
+        }
+
+        [TestMethod]
         public void NotesAdditionTest()
         {
             var customer = _util.GetAuthorizedCustomerDTO();
