@@ -331,3 +331,5 @@ ASALocalRun/
 
 # Idea
 .idea/
+
+*.log.*

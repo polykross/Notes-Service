@@ -16,7 +16,7 @@ namespace Notes.EntityFrameworkDBProvider.ModelConfiguration
                 .HasColumnType("nvarchar").HasMaxLength(26).IsRequired();
             HasIndex(customer => customer.Login).IsUnique(true);
             Property(customer => customer.Email).HasColumnName("Email").HasMaxLength(330).IsRequired();
-            Property(customer => customer.Password).HasColumnName("Password").HasMaxLength(26).IsRequired();
+            Property(customer => customer.Password).HasColumnName("Password").HasMaxLength(100).IsRequired();
             Property(customer => customer.LastLoginDate).HasColumnName("LastLoginDate").HasColumnType("datetime2").IsOptional();
         }
     }

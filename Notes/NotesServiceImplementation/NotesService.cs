@@ -67,19 +67,23 @@ namespace Notes.Server.NotesServiceImplementation
 
         public CustomerDTO Login(string login, string password)
         {
-            return DBProviderUtil.FunctionWithProvider(p =>
+            var result = DBProviderUtil.FunctionWithProvider(p =>
             {
                 var customer = p.Select<Customer>(c => c.Login == login);
                 var isPasswordCorrect = customer?.CheckPassword(password) == true;
-                if (isPasswordCorrect)
-                {
-                    _logger.Debug($"Customer's successful login attempt: {customer}");
-                    return GetLoggedInCustomerDTO(customer);
-                }
-
-                _logger.Error($"Customer's unsuccessful login attempt: {customer}");
-                return null;
+                return isPasswordCorrect ? GetLoggedInCustomerDTO(customer) : null;
             });
+
+            if (result == null)
+            {
+                _logger.Error($"Customer's unsuccessful login attempt: login = {login}, password = {password}");
+            }
+            else
+            {
+                _logger.Debug($"Customer's successful login attempt: {result}");
+            }
+
+            return result;
         }
 
         public List<ShortNoteDTO> GetNotes(Guid customerGuid)

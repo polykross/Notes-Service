@@ -56,7 +56,7 @@ namespace Notes.IntegrationTests
         }
 
         [TestMethod]
-        public void CustomersAuthorizationTest()
+        public void AuthorizationTest()
         {
             var registered = _client.Register(_util.BuildUniqueCustomerDTO());
             Assert.IsNotNull(registered);
@@ -64,9 +64,17 @@ namespace Notes.IntegrationTests
         }
 
         [TestMethod]
-        public void CustomersAuthorizationFailureTest()
+        public void AuthorizationFailureTest()
         {
             Assert.IsNull(_client.Login(login1: "NonExistingLogin", password: "NonExistingLogin"));
+        }
+
+        [TestMethod]
+        public void AuthorizationWrongPasswordTest()
+        {
+            var registered = _client.Register(_util.BuildUniqueCustomerDTO());
+            Assert.IsNotNull(registered);
+            Assert.IsNull(_client.Login(registered.Login, registered.Password + "q"));
         }
 
         [TestMethod]
