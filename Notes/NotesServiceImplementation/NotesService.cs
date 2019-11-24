@@ -70,8 +70,11 @@ namespace Notes.Server.NotesServiceImplementation
             var result = DBProviderUtil.FunctionWithProvider(p =>
             {
                 var customer = p.Select<Customer>(c => c.Login == login);
-                var isPasswordCorrect = customer?.CheckPassword(password) == true;
-                return isPasswordCorrect ? GetLoggedInCustomerDTO(customer) : null;
+                if (customer == null)
+                {
+                    return null;
+                }
+                return !customer.CheckPassword(password) ? null : GetLoggedInCustomerDTO(customer);
             });
 
             if (result == null)

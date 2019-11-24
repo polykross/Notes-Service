@@ -123,7 +123,7 @@ namespace Notes.DBModels
 
         public bool CheckPassword(string password)
         {
-            return _password == password;
+            return _password.Equals(password);
         }
 
         public override string ToString()
